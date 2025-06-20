@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - 프로젝트 1</title>
+    <style>
+        /* --- 기본 & 전체 스타일 --- */
+        :root {
+            --primary-color: #4A90E2; /* 포인트 컬러: 밝은 파란색 */
+            --dark-text-color: #333333;
+            --light-text-color: #666666;
+            --bg-color: #FFFFFF;
+            --secondary-bg-color: #f8f9fa; /* 섹션 배경색 */
+            --border-color: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text-color);
+            line-height: 1.6;
+            padding-top: 70px; /* 고정된 내비게이션 바 높이만큼 패딩 추가 */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        /* --- 내비게이션 바 스타일 (모든 페이지 공통) --- */
+        .main-nav {
+            background-color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-nav .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text-color);
+            text-decoration: none;
+        }
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .main-nav ul li a {
+            text-decoration: none;
+            color: var(--light-text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .main-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* --- 콘텐츠 페이지용 스타일 --- */
+        .page-header {
+            padding: 50px 0;
+            background-color: var(--secondary-bg-color);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-header h2 {
+            font-size: 2.8rem;
+            margin: 0;
+        }
+
+        .project-content {
+            padding: 60px 0;
+        }
+        .project-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .project-content .lead {
+            font-size: 1.2rem;
+            color: var(--light-text-color);
+            margin-bottom: 40px;
+        }
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .project-content ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .project-content li {
+            margin-bottom: 10px;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tech-tag {
+            background-color: var(--secondary-bg-color);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- 푸터 스타일 (모든 페이지 공통) --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">My Portfolio</a>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="project1.html">프로젝트 1</a></li>
+                <li><a href="project2.html">프로젝트 2</a></li>
+                <li><a href="portfolio.html">포트폴리오</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h2>프로젝트 1: AI 기반 일정 관리 앱</h2>
+        </div>
+    </header>
+
+    <main class="project-content">
+        <div class="container">
+            <p class="lead">
+                이곳에 프로젝트에 대한 한두 문장의 핵심 요약을 적습니다. 예를 들어, "자연어 처리 기술을 활용하여 사용자의 대화형 입력을 분석하고, 자동으로 일정을 등록 및 관리해주는 지능형 웹 애플리케이션입니다." 와 같이 작성할 수 있습니다.
+            </p>
+
+            <h3>프로젝트 개요</h3>
+            <p>
+                프로젝트를 시작하게 된 계기, 목표, 그리고 어떤 문제를 해결하고자 했는지에 대해 상세히 서술하는 공간입니다. 사용자의 어떤 불편함을 해소하고 싶었는지, 기술적으로 어떤 도전을 하고 싶었는지 등을 자유롭게 작성해 보세요.
+            </p>
+
+            <h3>주요 기능</h3>
+            <ul>
+                <li><strong>대화형 일정 추가:</strong> "내일 3시에 강남에서 회의"와 같은 문장을 입력하면 자동으로 시간, 장소, 내용을 파싱하여 일정을 생성합니다.</li>
+                <li><strong>리마인더 기능:</strong> 등록된 일정 시작 전에 사용자에게 이메일 또는 브라우저 알림을 전송합니다.</li>
+                <li><strong>캘린더 연동:</strong> 구글 캘린더와 실시간으로 동기화하여 일정을 통합 관리할 수 있습니다.</li>
+            </ul>
+
+            <h3>사용한 기술</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Natural Language API</span>
+                <span class="tech-tag">JWT</span>
+            </div>
+            
+            <h3>어려웠던 점 및 해결 과정</h3>
+            <p>
+                프로젝트를 진행하며 겪었던 기술적, 논리적 어려움과 그것을 어떻게 해결했는지 구체적으로 작성하면 좋습니다. 예를 들어, "다양한 형태의 비정형 자연어 문장을 정확하게 분석하는 데 어려움이 있었습니다. 이를 해결하기 위해 정규 표현식과 여러 NLP 라이브러리를 테스트하고, 최종적으로는 Google Natural Language API를 도입하여 인식률을 95%까지 끌어올렸습니다." 와 같이 작성할 수 있습니다.
+            </p>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p>저에 대해 더 궁금하시다면 연락 주세요.</p>
+            <p>
+                Email: <a href="mailto:alex.lee@example.com">alex.lee@example.com</a> | 
+                GitHub: <a href="https://github.com" target="_blank">github.com/alexlee-dev</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025 Alex Lee. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
