@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - About</title>
+    <style>
+        /* --- 기본 & 전체 스타일 --- */
+        :root {
+            --primary-color: #4A90E2;
+            --dark-text-color: #333333;
+            --light-text-color: #666666;
+            --bg-color: #FFFFFF;
+            --secondary-bg-color: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color); color: var(--dark-text-color);
+            line-height: 1.6; padding-top: 70px;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4, h5 { font-weight: 600; }
+
+        /* --- 내비게이션 바 스타일 (공통) --- */
+        .main-nav {
+            background-color: white; padding: 15px 0; position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--dark-text-color); text-decoration: none; }
+        .main-nav ul { list-style: none; display: flex; gap: 20px; }
+        .main-nav ul li a { text-decoration: none; color: var(--light-text-color); font-weight: 500; transition: color 0.3s; }
+        .main-nav ul li a:hover { color: var(--primary-color); }
+        
+        /* --- 페이지 헤더 스타일 --- */
+        .page-header {
+            padding: 50px 0; background-color: var(--secondary-bg-color);
+            text-align: center; border-bottom: 1px solid var(--border-color);
+        }
+        .page-header h2 { font-size: 2.8rem; margin: 0; }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        /* --- [새로 디자인됨] About Me 레이아웃 --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr; /* 왼쪽 프로필(고정폭), 오른쪽 정보(가변폭) */
+            align-items: start;
+            gap: 60px;
+        }
+        
+        .profile-pic-wrapper img {
+            width: 100%;
+            border-radius: 50%; /* 프로필 사진을 원형으로 */
+            border: 6px solid white;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .profile-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .profile-info .intro-text {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .info-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .info-list .label {
+            font-weight: 600;
+            width: 80px;
+            color: var(--dark-text-color);
+        }
+
+        .experience-section h4 {
+            font-size: 1.6rem;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* 경력 타임라인 스타일 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before { /* 타임라인의 세로선 */
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--border-color);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .timeline-item::before { /* 타임라인의 점 */
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        .timeline-item h5 { font-size: 1.2rem; }
+        .timeline-item .meta { color: var(--light-text-color); margin-bottom: 10px; font-size: 0.9rem; }
+        .timeline-item ul { padding-left: 20px; }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr; /* 1단으로 변경 */
+            }
+            .profile-pic-wrapper {
+                width: 200px;
+                margin: 0 auto 40px auto;
+            }
+            .profile-info {
+                text-align: center;
+            }
+            .info-list li {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .info-list .label { width: auto; margin-bottom: 5px; }
+            .timeline { padding-left: 20px; }
+            .timeline-item::before { left: -24px; }
+        }
+
+        /* --- 푸터 스타일 (공통) --- */
+        footer {
+            text-align: center; padding: 40px 20px;
+            background-color: #333333; color: #ffffff;
+        }
+        footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">My Portfolio</a>
+            <ul>
+                <li><a href="index.html">Main</a></li>
+                <li><a href="project.html">Project</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h2>About Me</h2>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+            <div class="about-grid">
+                <aside class="profile-pic-wrapper">
+                    <img src="https://via.placeholder.com/250x250.png?text=Profile+Pic" alt="프로필 사진">
+                </aside>
+
+                <div class="profile-info">
+                    <h3>박진일</h3>
+                    <p class="intro-text">
+                        이곳에 자신을 나타내는 한두 문단의 소개글을 작성합니다. 어떤 분야에 관심이 많고, 어떤 개발자/제작자로 성장하고 싶은지 자신의 비전과 가치관을 보여주세요.
+                    </p>
+                    <ul class="info-list">
+                        <li><span class="label">영문명</span> Park, Jin-Il</li>
+                        <li><span class="label">한자명</span> 朴進一</li>
+                        <li><span class="label">연락처</span> 010-1234-5678</li>
+                        <li><span class="label">이메일</span> pjipro2@naver.com</li>
+                    </ul>
+
+                    <div class="experience-section">
+                        <h4>경력 사항</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h5>[직책]</h5>
+                                <p class="meta">[회사명] | [근무 기간, 예: 2022.03 - 현재]</p>
+                                <ul>
+                                    <li>이곳에 주요 업무 내용과 성과를箇条書き(개조식)으로 작성합니다.</li>
+                                    <li>수치화할 수 있는 성과가 있다면 함께 작성하는 것이 좋습니다.</li>
+                                    <li>예: 신규 프로젝트의 UI 개발을 주도하여 사용자 만족도 20% 향상</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item">
+                                <h5>[직책]</h5>
+                                <p class="meta">[이전 회사명] | [근무 기간, 예: 2020.01 - 2022.02]</p>
+                                <ul>
+                                    <li>이곳에 이전 직장에서의 주요 업무 내용과 성과를 작성합니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>저에 대해 더 궁금하시다면 연락 주세요.</p>
+            <p>Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

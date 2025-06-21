@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Main</title>
+    <style>
+        /* --- 기본 & 전체 스타일 --- */
+        :root {
+            --primary-color: #4A90E2; /* 포인트 컬러: 밝은 파란색 */
+            --dark-text-color: #333333;
+            --light-text-color: #666666;
+            --bg-color: #FFFFFF;
+            --secondary-bg-color: #f8f9fa; /* 섹션 배경색 */
+            --border-color: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text-color);
+            line-height: 1.6;
+            padding-top: 70px; /* 고정된 내비게이션 바 높이만큼 패딩 추가 */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* --- 내비게이션 바 스타일 (모든 페이지 공통) --- */
+        .main-nav {
+            background-color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-nav .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text-color);
+            text-decoration: none;
+        }
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .main-nav ul li a {
+            text-decoration: none;
+            color: var(--light-text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .main-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 헤더 (자기소개) 섹션 --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        #bg-video {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            min-width: 100%; min-height: 100%; width: auto; height: auto;
+            z-index: 0; object-fit: cover;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); z-index: 1;
+        }
+        .hero .container { position: relative; z-index: 2; }
+        .hero h1 { font-size: 3.5rem; }
+
+        /* --- Projects 섹션 스타일 --- */
+        #projects {
+            padding: 80px 0;
+            background-color: var(--secondary-bg-color);
+        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .project-card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+        .project-card { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; height: 100%; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .project-card .content { padding: 25px; }
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .project-card p { font-size: 0.95rem; color: var(--light-text-color); margin-bottom: 20px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background-color: var(--primary-color); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
+        
+        /* --- 푸터 스타일 (공통) --- */
+        footer { text-align: center; padding: 40px 20px; background-color: #333333; color: #ffffff; }
+        footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
+
+        /* --- 애니메이션 --- */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">My Portfolio</a>
+            <ul>
+                <li><a href="index.html">Main</a></li>
+                <li><a href="project.html">Project</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="video/background.mp4" type="video/mp4">
+        </video>
+        <div class="container fade-in">
+            <h1>안녕하세요</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="projects">
+            <div class="container">
+                <h2 class="fade-in">Featured Projects</h2>
+                <div class="projects-grid">
+                    
+                    <a href="project.html" class="project-card-link">
+                        <div class="project-card fade-in">
+                            <div class="content">
+                                <h3>프로젝트 상세 보기</h3>
+                                <p>진행했던 핵심 프로젝트들의 상세한 개발 과정과 결과물을 확인해 보세요.</p>
+                                <div class="tags">
+                                    <span class="tag">Case Study</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="portfolio.html" class="project-card-link">
+                        <div class="project-card fade-in">
+                            <div class="content">
+                                <h3>포트폴리오 감상하기</h3>
+                                <p>영상과 이미지 중심으로 제작된 시각적 결과물들을 둘러보세요.</p>
+                                <div class="tags">
+                                    <span class="tag">Showcase</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="about.html" class="project-card-link">
+                        <div class="project-card fade-in">
+                            <div class="content">
+                                <h3>내 소개 (About Me)</h3>
+                                <p>저의 경력, 기술 스택, 그리고 가치관에 대해 더 알아보세요.</p>
+                                <div class="tags">
+                                    <span class="tag">Profile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>저에 대해 더 궁금하시다면 연락 주세요.</p>
+            <p>
+                Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
