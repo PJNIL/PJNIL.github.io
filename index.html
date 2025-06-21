@@ -7,11 +7,11 @@
     <style>
         /* --- 기본 & 전체 스타일 --- */
         :root {
-            --primary-color: #4A90E2; /* 포인트 컬러: 밝은 파란색 */
+            --primary-color: #4A90E2;
             --dark-text-color: #333333;
             --light-text-color: #666666;
             --bg-color: #FFFFFF;
-            --secondary-bg-color: #f8f9fa; /* 섹션 배경색 */
+            --secondary-bg-color: #f8f9fa;
             --border-color: #e9ecef;
         }
 
@@ -30,7 +30,7 @@
             background-color: var(--bg-color);
             color: var(--dark-text-color);
             line-height: 1.6;
-            padding-top: 70px; /* 고정된 내비게이션 바 높이만큼 패딩 추가 */
+            padding-top: 70px; /* 고정된 내비게이션 바 높이 */
         }
 
         .container {
@@ -47,10 +47,9 @@
             font-size: 2.5rem;
             margin-bottom: 40px;
             text-align: center;
-            color: var(--dark-text-color);
         }
 
-        /* --- 내비게이션 바 스타일 (모든 페이지 공통) --- */
+        /* --- 내비게이션 바 스타일 (공통) --- */
         .main-nav {
             background-color: white;
             padding: 15px 0;
@@ -87,37 +86,78 @@
             color: var(--primary-color);
         }
 
-        /* --- 헤더 (자기소개) 섹션 --- */
+        /* --- [수정됨] 헤더 섹션 스타일 --- */
         .hero {
+            background-color: var(--secondary-bg-color);
+            padding: 80px 0;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 70px);
-            text-align: center;
-            color: white;
-            position: relative;
+            min-height: calc(80vh - 70px);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1; /* 남는 공간을 차지하도록 비율 설정 */
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+        }
+
+        .hero-video-wrapper {
+            flex: 1.5; /* 텍스트보다 영상이 약간 더 큰 비율을 차지 */
+            max-width: 600px; /* 영상의 최대 너비를 제한하여 화질 저하 방지 */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-        #bg-video {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            min-width: 100%; min-height: 100%; width: auto; height: auto;
-            z-index: 0; object-fit: cover;
-        }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); z-index: 1;
-        }
-        .hero .container { position: relative; z-index: 2; }
-        .hero h1 { font-size: 3.5rem; }
 
-        /* --- Projects 섹션 스타일 --- */
-        section { padding: 80px 0; }
-        #projects { background-color: var(--secondary-bg-color); }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .project-card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
-        .project-card { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; height: 100%; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .hero-video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- Projects 섹션 스타일 (변경 없음) --- */
+        #projects {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .project-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        .project-card {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
         .project-card .content { padding: 25px; }
         .project-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
         .project-card p { font-size: 0.95rem; color: var(--light-text-color); margin-bottom: 20px; }
@@ -126,14 +166,43 @@
         .view-more-btn { display: block; width: fit-content; margin: 40px auto 0; padding: 12px 30px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 25px; font-weight: 500; transition: background-color 0.3s; }
         .view-more-btn:hover { background-color: #3a7bc8; }
 
-        /* --- 푸터 스타일 (모든 페이지 공통) --- */
-        footer { text-align: center; padding: 40px 20px; background-color: #333333; color: #ffffff; }
-        footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        /* --- 푸터 스타일 (공통) --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
         footer a:hover { text-decoration: underline; }
 
         /* --- 애니메이션 --- */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            animation-fill-mode: forwards;
+        }
+        .visible {
+             opacity: 1;
+             transform: translateY(0);
+        }
+        
+        /* --- [추가됨] 반응형 디자인 --- */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column; /* 화면이 작아지면 텍스트와 영상을 수직으로 쌓음 */
+                text-align: center;
+            }
+            .hero-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -151,11 +220,16 @@
     </nav>
 
     <header class="hero">
-        <video autoplay muted loop playsinline id="bg-video">
-            <source src="video/background.mp4" type="video/mp4">
-        </video>
-        <div class="container fade-in">
-            <h1>안녕하세요</h1>
+        <div class="hero-content container">
+            <div class="hero-text fade-in">
+                <h1>안녕하세요</h1>
+                <p>이곳에 자신을 나타내는<br>간단한 소개 문구를 넣을 수 있습니다.</p>
+            </div>
+            <div class="hero-video-wrapper fade-in">
+                <video autoplay muted loop playsinline>
+                    <source src="video/background.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     </header>
 
@@ -164,7 +238,6 @@
             <div class="container">
                 <h2 class="fade-in">Featured Projects</h2>
                 <div class="projects-grid">
-                    
                     <a href="project1.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
@@ -178,7 +251,6 @@
                             </div>
                         </div>
                     </a>
-
                     <a href="project2.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
@@ -192,7 +264,6 @@
                             </div>
                         </div>
                     </a>
-
                     <a href="portfolio.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
@@ -223,8 +294,17 @@
     <script>
         // 스크롤에 따른 페이드-인 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
-            const fadeInElements = document.querySelectorAll('.fade-in');
+            // 수정: IntersectionObserver는 스크롤 이벤트에만 적합하므로
+            // 첫 화면의 hero-text와 hero-video-wrapper는 바로 보이도록 처리합니다.
+            const heroElements = document.querySelectorAll('.hero .fade-in');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200); // 약간의 시차를 둬서 나타나도록
+            });
 
+            // 스크롤 시 나타나는 요소들
+            const scrollFadeInElements = document.querySelectorAll('main .fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -236,7 +316,7 @@
                 threshold: 0.1
             });
 
-            fadeInElements.forEach(el => {
+            scrollFadeInElements.forEach(el => {
                 observer.observe(el);
             });
         });
