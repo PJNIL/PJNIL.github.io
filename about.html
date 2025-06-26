@@ -8,6 +8,7 @@
         /* --- 기본 & 전체 스타일 --- */
         :root {
             --primary-color: #4A90E2;
+            --navy-color: #2c3e50; /* 남색 계열 색상 정의 */
             --dark-text-color: #333333;
             --light-text-color: #666666;
             --bg-color: #FFFFFF;
@@ -26,20 +27,24 @@
 
         /* --- 내비게이션 바 스타일 (공통) --- */
         .main-nav {
-            background-color: white; padding: 15px 0; position: fixed;
+            background-color: var(--navy-color); /* [변경] 배경색을 남색으로 변경 */
+            padding: 15px 0; position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--dark-text-color); text-decoration: none; }
+        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; } /* [변경] 로고 색상을 흰색으로 */
         .main-nav ul { list-style: none; display: flex; gap: 20px; }
-        .main-nav ul li a { text-decoration: none; color: var(--light-text-color); font-weight: 500; transition: color 0.3s; }
-        .main-nav ul li a:hover { color: var(--primary-color); }
+        .main-nav ul li a { text-decoration: none; color: #e0e0e0; font-weight: 500; transition: color 0.3s; } /* [변경] 링크 색상을 밝은 회색으로 */
+        .main-nav ul li a:hover { color: #FFFFFF; } /* [변경] 링크 호버 색상을 흰색으로 */
         
         /* --- 페이지 헤더 스타일 --- */
         .page-header {
-            padding: 50px 0; background-color: var(--secondary-bg-color);
-            text-align: center; border-bottom: 1px solid var(--border-color);
+            padding: 50px 0;
+            background-color: var(--navy-color); /* [변경] 배경색을 남색으로 변경 */
+            color: #FFFFFF; /* [추가] 내부 텍스트 색상을 흰색으로 */
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
         .page-header h2 { font-size: 2.8rem; margin: 0; }
 
