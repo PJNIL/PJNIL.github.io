@@ -40,28 +40,22 @@
 
         /* --- 프로젝트 상세 콘텐츠 --- */
         .project-detail { padding: 60px 0; }
-        
         .project-section { margin-bottom: 60px; }
+        .project-section h3 { font-size: 2rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
 
-        .project-section h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+        /* --- [수정됨] 반응형 유튜브 영상 스타일 --- */
+        .responsive-video-wrapper {
+            position: relative; overflow: hidden; width: 100%;
+            padding-top: 56.25%; /* 16:9 비율 */
+            border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #000;
         }
-
-        .video-container {
-            position: relative; padding-bottom: 56.25%; /* 16:9 비율 */
-            height: 0; overflow: hidden; max-width: 100%;
-            background: #000; border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .video-container video {
+        .responsive-video-wrapper iframe {
             position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+            width: 100%; height: 100%; border: 0;
         }
 
-        /* --- [추가됨] 프로젝트 정보 요약 박스 스타일 --- */
+        /* --- 프로젝트 정보 요약 박스 스타일 --- */
         .project-summary-box {
             background-color: var(--secondary-bg-color);
             border: 1px solid var(--border-color);
@@ -80,57 +74,28 @@
         }
         .project-meta-grid .label { font-weight: 600; color: var(--dark-text-color); }
 
-        /* --- [추가됨] 업무 리스트 토글 버튼 스타일 --- */
+        /* --- 업무 리스트 토글 버튼 스타일 --- */
         .collapsible-toggle {
-            background-color: var(--primary-color);
-            color: white;
-            cursor: pointer;
-            padding: 15px 20px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: var(--primary-color); color: white; cursor: pointer;
+            padding: 15px 20px; width: 100%; border: none; text-align: left;
+            outline: none; font-size: 1.2rem; font-weight: 600; border-radius: 5px;
+            display: flex; justify-content: space-between; align-items: center;
             transition: background-color 0.3s;
         }
-        .collapsible-toggle:hover {
-            background-color: #3a7bc8;
-        }
-        .collapsible-toggle .arrow {
-            font-size: 1rem;
-            transition: transform 0.3s ease-out;
-        }
-        .collapsible-toggle.active .arrow {
-            transform: rotate(180deg);
-        }
+        .collapsible-toggle:hover { background-color: #3a7bc8; }
+        .collapsible-toggle .arrow { font-size: 1rem; transition: transform 0.3s ease-out; }
+        .collapsible-toggle.active .arrow { transform: rotate(180deg); }
         .collapsible-content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
+            padding: 0 18px; max-height: 0; overflow: hidden;
             transition: max-height 0.3s ease-out;
             background-color: var(--secondary-bg-color);
             border-radius: 0 0 5px 5px;
         }
-        .collapsible-content ul {
-            padding: 20px 0 20px 20px; /* 내부 여백 */
-        }
+        .collapsible-content ul { padding: 20px 0 20px 20px; }
         
-        .project-description p {
-            font-size: 1.1rem;
-            color: var(--light-text-color);
-            line-height: 1.8;
-        }
+        .project-description p { font-size: 1.1rem; color: var(--light-text-color); line-height: 1.8; }
         
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 4px; border: 1px solid var(--border-color); }
 
         /* --- 푸터 (공통) --- */
@@ -157,18 +122,15 @@
 
     <header class="page-header">
         <div class="container">
-            <h2>Project: METIN</h2>
+            <h2>메틴:파멸의 서곡</h2>
         </div>
     </header>
 
     <main class="project-detail">
         <div class="container">
             <section class="project-section project-video-section">
-                <div class="video-container">
-                    <video controls poster="https://via.placeholder.com/1200x675.png?text=METIN+Intro+Video">
-                        <source src="video/metin_intro.mp4" type="video/mp4">
-                        브라우저가 비디오 태그를 지원하지 않습니다.
-                    </video>
+                <div class="responsive-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/m6ggwvxa280?si=2RL8Nn5yxOhO2vBu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </section>
 
@@ -221,7 +183,7 @@
             <section class="project-section project-description">
                 <h3>느낀점 및 배운점</h3>
                 <p>
-                    예시: 사용자 데이터베이스를 설계하며 데이터 정규화의 중요성을 체감할 수 있었습니다. 또한, AWS를 이용해 직접 배포를 진행하며 클라우드 인프라에 대한 이해도를 높일 수 있었던 좋은 기회였습니다.
+                    프로젝트를 통해 느낀 점과 배운 점을 진솔하게 작성하세요.
                 </p>
             </section>
 
@@ -230,7 +192,6 @@
                 <div class="gallery-grid">
                     <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+1" alt="METIN 스크린샷 1">
                     <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+2" alt="METIN 스크린샷 2">
-                    <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+3" alt="METIN 스크린샷 3">
                 </div>
             </section>
         </div>
