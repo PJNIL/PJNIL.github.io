@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jnil's Cave - 메틴:파멸의 서곡</title>
+    <title>My Portfolio - Project: METIN</title>
     <style>
         :root {
             --primary-color: #4A90E2; --dark-text-color: #333333; --light-text-color: #666666;
@@ -41,56 +41,73 @@
         /* --- 프로젝트 상세 콘텐츠 --- */
         .project-detail { padding: 60px 0; }
         
-        .project-section { margin-bottom: 60px; }
-
-        .project-section h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        /* --- 반응형 유튜브 영상 스타일 --- */
-        .responsive-video-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 영상 비율 */
+        .project-summary-box {
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background-color: #000;
+            padding: 30px;
+            margin-bottom: 50px;
         }
-        .responsive-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .project-summary-box p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .project-meta-grid .label { font-weight: 600; color: var(--dark-text-color); }
+
+        .project-section { margin-bottom: 60px; }
+        .project-section h3 { font-size: 2rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+
+        /* --- [새로 추가됨] 업무 리스트 토글 버튼 스타일 --- */
+        .collapsible-toggle {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 15px 20px;
             width: 100%;
-            height: 100%;
-            border: 0;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .collapsible-toggle:hover {
+            background-color: #3a7bc8;
+        }
+        .collapsible-toggle .arrow {
+            font-size: 1rem;
+            transition: transform 0.3s ease-out;
+        }
+        .collapsible-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--secondary-bg-color);
+            border-radius: 0 0 5px 5px;
+        }
+        .collapsible-content ul {
+            padding: 20px 0 20px 20px; /* 내부 여백 */
         }
 
-        .project-description p {
-            font-size: 1.1rem;
-            color: var(--light-text-color);
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
-        .gallery-grid img {
-            width: 100%;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s;
-        }
-        .gallery-grid img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        .gallery-grid img { width: 100%; border-radius: 4px; border: 1px solid var(--border-color); }
 
         /* --- 푸터 (공통) --- */
         footer {
@@ -104,7 +121,7 @@
 <body>
     <nav class="main-nav">
         <div class="container">
-            <a href="index.html" class="nav-logo">Jnil's Cave</a>
+            <a href="index.html" class="nav-logo">My Portfolio</a>
             <ul>
                 <li><a href="index.html">Main</a></li>
                 <li><a href="project.html">Project</a></li>
@@ -116,67 +133,50 @@
 
     <header class="page-header">
         <div class="container">
-            <h2>메틴:파멸의 서곡</h2>
+            <h2>Project: METIN</h2>
         </div>
     </header>
 
     <main class="project-detail">
         <div class="container">
-            <section class="project-section project-video-section">
-                <div class="responsive-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/m6ggwvxa280?si=2RL8Nn5yxOhO2vBu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <section class="project-section project-summary-box">
+                <p><strong>게임 설명:</strong> '메틴:파멸의 서곡'은 PC 메틴의 IP를 계승하여 모바일로 개발된 PVP 위주의 경쟁 RPG 게임입니다.</p>
+                <div class="project-meta-grid">
+                    <div><span class="label">플랫폼:</span> 모바일</div>
+                    <div><span class="label">장르:</span> 2D 탑뷰 MMORPG</div>
+                    <div><span class="label">역할:</span> 콘텐츠 디자이너, 맵 디자이너</div>
+                    <div><span class="label">날짜:</span> 2023년 11월 ~ 2025년 8월</div>
                 </div>
             </section>
 
-            <section class="project-section project-description">
-                <h3>참여 기간 및 담당 업무</h3>
-                <p>
-                    [1년 9개월]
-                    <br>2023년 11월 ~ 2024년 9월: 프리프로덕션 및 개발
-                    <br>2024년 9월 ~ 2025년 8월: 라이브 서비스
-<br>
-                    <br>[콘텐츠 디자이너]
-                    <br>- 튜토리얼 기획
-                    <br>- 아이템 시스템 기획
-                    <br>- 메인 퀘스트 180종 기획
-                    <br>- 공성전 기획
-                    <br>- 해골 콘텐츠 기획
-                    <br>- 분신 콘텐츠 기획
-                    <br>- 펫 콘텐츠 기획
-                    <br>- 아티팩트 콘텐츠 기획
-                    <br>- 룬 콘텐츠 기획
-                    <br>- 오브 콘텐츠 기획
-                    <br>- 장비 옵션 부여 콘텐츠 기획
-                    <br>- 캐쉬 장신구 기획
-                    <br>- 캐릭터 및 NPC 보이스 녹음
-                    <br>- NPC 모델링 애니메이션 외주 담당
-<br>
-                    <br>[맵 디자이너]
-                    <br>- 메인 필드 13종 제작
-                    <br>- 타일 레이어링
-                    <br>- 오브젝트 배치
-                    <br>- 몬스터 및 NPC 배치
-                    <br>- 충돌 처리, 워프, 맵 이펙트 설정
-                    <br>- 필드 콘텐츠 기획
-                    <br>- 일일 던전 기획
-                    <br>- 특수 던전 기획 (주말 던전, 공성 던전, 월드 보상 던전 등)
-                    <br>- 공성전 레벨 기획
-                    <br>- 고급 생활 지역 기획
-                    <br>- 몬스터 드랍 리스트 기획
-                    <br>- NPC 3D 모델링 외주 담당
-                </p>
-                <h3>과정</h3>
-                <p>
-                    예시: 사용자 데이터베이스를 설계하며 데이터 정규화의 중요성을 체감할 수 있었습니다. 또한, AWS를 이용해 직접 배포를 진행하며 클라우드 인프라에 대한 이해도를 높일 수 있었던 좋은 기회였습니다.
-                </p>
+            <section class="project-section">
+                <h3>나의 역할 및 업무</h3>
+                <button type="button" class="collapsible-toggle">
+                    주요 업무 상세보기
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <ul>
+                        <li>업무 내용 1: ...</li>
+                        <li>업무 내용 2: ...</li>
+                        <li>업무 내용 3: ...</li>
+                        <li>(여기에 긴 업무 리스트를 나열합니다)</li>
+                    </ul>
+                </div>
             </section>
 
+            <section class="project-section">
+                <h3>느낀점 및 배운점</h3>
+                <p>
+                    프로젝트를 통해 느낀 점과 배운 점을 진솔하게 작성하세요.
+                </p>
+            </section>
+            
             <section class="project-section project-gallery">
                 <h3>프로젝트 이미지</h3>
                 <div class="gallery-grid">
                     <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+1" alt="METIN 스크린샷 1">
                     <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+2" alt="METIN 스크린샷 2">
-                    <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+3" alt="METIN 스크린샷 3">
                 </div>
             </section>
         </div>
@@ -189,5 +189,23 @@
             <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const collapsibles = document.querySelectorAll(".collapsible-toggle");
+
+            collapsibles.forEach(item => {
+                item.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
