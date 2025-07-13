@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - Project: 1003B</title>
+    <title>Jnil's Cave - 천상비M</title>
     <style>
         :root {
             --primary-color: #4A90E2; --dark-text-color: #333333; --light-text-color: #666666;
@@ -50,15 +50,23 @@
             border-bottom: 2px solid var(--border-color);
         }
 
-        .video-container {
-            position: relative; padding-bottom: 56.25%; /* 16:9 비율 */
-            height: 0; overflow: hidden; max-width: 100%;
-            background: #000; border-radius: 8px;
+        /* --- 반응형 유튜브 영상 스타일 --- */
+        .responsive-video-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 영상 비율 */
+            border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #000;
         }
-        .video-container video {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+        .responsive-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .project-description p {
@@ -96,7 +104,7 @@
 <body>
     <nav class="main-nav">
         <div class="container">
-            <a href="index.html" class="nav-logo">My Portfolio</a>
+            <a href="index.html" class="nav-logo">Jnil's Cave</a>
             <ul>
                 <li><a href="index.html">Main</a></li>
                 <li><a href="project.html">Project</a></li>
@@ -108,39 +116,35 @@
 
     <header class="page-header">
         <div class="container">
-            <h2>Project: 1003B</h2>
+            <h2>천상비M</h2>
         </div>
     </header>
 
     <main class="project-detail">
         <div class="container">
             <section class="project-section project-video-section">
-                <div class="video-container">
-                    <video controls poster="https://via.placeholder.com/1200x675.png?text=1003B+Intro+Video">
-                        <source src="video/1003b_intro.mp4" type="video/mp4">
-                        브라우저가 비디오 태그를 지원하지 않습니다.
-                    </video>
-                </div>
+                <div class="responsive-video-wrapper">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lPP-u9kS-dA?si=CQ1xmjtfDM1YL41V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                      </div>
             </section>
 
             <section class="project-section project-description">
                 <h3>나의 역할 및 업무</h3>
                 <p>
-                    예시: 본 프로젝트에서 저는 3D 배경 모델링과 캐릭터 애니메이션을 담당했습니다. 초기 컨셉 단계부터 참여하여 배경의 전체적인 분위기를 구체화했으며, ZBrush와 3ds Max를 사용하여 주요 에셋을 제작했습니다. 특히, 최적화 작업을 통해...
+                    예시: 천상비 프로젝트에서는 서버 아키텍처 설계와 백엔드 API 개발을 총괄했습니다. Python과 Django 프레임워크를 기반으로 안정적인 서비스를 구축했으며, 대용량 트래픽을 처리하기 위한...
                 </p>
                 <h3>느낀점 및 배운점</h3>
                 <p>
-                    예시: 이번 프로젝트를 통해 처음으로 대규모 팀 협업 프로세스를 경험했습니다. Git을 이용한 버전 관리의 중요성을 깨달았으며, 다른 파트의 전문가들과 소통하며 문제를 해결하는 과정에서 기술적인 성장뿐만 아니라 커뮤니케이션 능력도 크게 향상되었습니다.
+                    예시: 사용자 데이터베이스를 설계하며 데이터 정규화의 중요성을 체감할 수 있었습니다. 또한, AWS를 이용해 직접 배포를 진행하며 클라우드 인프라에 대한 이해도를 높일 수 있었던 좋은 기회였습니다.
                 </p>
             </section>
 
             <section class="project-section project-gallery">
                 <h3>프로젝트 이미지</h3>
                 <div class="gallery-grid">
-                    <img src="https://via.placeholder.com/800x600.png?text=1003B+Screenshot+1" alt="1003B 스크린샷 1">
-                    <img src="https://via.placeholder.com/800x600.png?text=1003B+Screenshot+2" alt="1003B 스크린샷 2">
-                    <img src="https://via.placeholder.com/800x600.png?text=1003B+Screenshot+3" alt="1003B 스크린샷 3">
-                    <img src="https://via.placeholder.com/800x600.png?text=1003B+Screenshot+4" alt="1003B 스크린샷 4">
+                    <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+1" alt="METIN 스크린샷 1">
+                    <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+2" alt="METIN 스크린샷 2">
+                    <img src="https://via.placeholder.com/800x600.png?text=METIN+Screenshot+3" alt="METIN 스크린샷 3">
                 </div>
             </section>
         </div>
