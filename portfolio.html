@@ -41,7 +41,7 @@
         /* --- 포트폴리오 아이템 레이아웃 --- */
         .portfolio-item {
             display: grid;
-            grid-template-columns: 300px 1fr; /* 왼쪽 설명(고정폭), 오른쪽 갤러리(가변폭) */
+            grid-template-columns: 300px 1fr;
             gap: 50px;
             padding: 80px 0;
         }
@@ -50,29 +50,38 @@
         }
 
         .portfolio-description {
-            position: -webkit-sticky; /* Safari 브라우저 지원 */
-            position: sticky;
-            top: 100px; /* 70px 네비게이션 바 아래에 여유 공간을 두고 고정 */
+            position: -webkit-sticky; position: sticky;
+            top: 100px;
             align-self: start; 
         }
-        .portfolio-description h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        .portfolio-description p {
-            color: var(--light-text-color);
-            margin-bottom: 20px;
-        }
-        .tech-tags {
-            display: flex; flex-wrap: wrap; gap: 10px;
-        }
+        .portfolio-description h3 { font-size: 2rem; margin-bottom: 15px; }
+        .portfolio-description p { color: var(--light-text-color); margin-bottom: 20px; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .tech-tag {
             background-color: var(--secondary-bg-color); color: var(--primary-color);
             padding: 5px 12px; border-radius: 15px; font-size: 0.8rem;
             font-weight: 500; border: 1px solid var(--border-color);
         }
+        
+        /* --- [추가됨] 반응형 유튜브 영상 스타일 --- */
+        .responsive-video-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 비율 */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .responsive-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
-        .portfolio-gallery video,
         .portfolio-gallery img {
             width: 100%;
             border-radius: 8px;
@@ -80,17 +89,9 @@
             margin-bottom: 20px;
         }
 
-        /* 반응형: 화면이 좁아지면 2단 레이아웃을 1단으로 변경 */
         @media (max-width: 900px) {
-            .portfolio-item {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .portfolio-description {
-                position: static;
-                top: auto;
-                margin-bottom: 40px;
-            }
+            .portfolio-item { grid-template-columns: 1fr; gap: 30px; }
+            .portfolio-description { position: static; top: auto; margin-bottom: 40px; }
         }
 
         /* --- 푸터 (공통) --- */
@@ -134,9 +135,9 @@
                     </div>
                 </aside>
                 <div class="portfolio-gallery">
-                    <video controls poster="https://via.placeholder.com/800x450.png?text=Portfolio+1+Video">
-                        <source src="video/portfolio1.mp4" type="video/mp4">
-                    </video>
+                    <div class="responsive-video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/P8K_inNfEQw?si=whuhoA936na0ivhi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <img src="https://via.placeholder.com/800x450.png?text=Portfolio+1+Image+1" alt="포트폴리오 1 이미지 1">
                     <img src="https://via.placeholder.com/800x450.png?text=Portfolio+1+Image+2" alt="포트폴리오 1 이미지 2">
                 </div>
@@ -152,9 +153,9 @@
                     </div>
                 </aside>
                 <div class="portfolio-gallery">
-                    <video controls poster="https://via.placeholder.com/800x450.png?text=Portfolio+2+Video">
-                        <source src="video/portfolio2.mp4" type="video/mp4">
-                    </video>
+                    <div class="responsive-video-wrapper">
+                        <iframe src="http://googleusercontent.com/youtube.com/7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                     <img src="https://via.placeholder.com/800x450.png?text=Portfolio+2+Image+1" alt="포트폴리오 2 이미지 1">
                 </div>
             </section>
