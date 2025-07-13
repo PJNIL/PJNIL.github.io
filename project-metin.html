@@ -5,26 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jnil's Cave - 메틴:파멸의 서곡</title>
     <style>
-/* 1. 영상의 '틀'을 만드는 부분 (검은색 배경) */
-.responsive-video-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 영상 비율 */
-    border-radius: 8px; /* 둥근 모서리 (선택 사항) */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    background-color: #000; /* 영상 로딩 중 검은 배경 표시 */
-}
-
-/* 2. '틀' 안에 있는 iframe 영상을 꽉 채우는 부분 (가장 중요!) */
-.responsive-video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
         :root {
             --primary-color: #4A90E2; --dark-text-color: #333333; --light-text-color: #666666;
             --bg-color: #FFFFFF; --secondary-bg-color: #f8f9fa; --border-color: #e9ecef;
@@ -70,15 +50,23 @@
             border-bottom: 2px solid var(--border-color);
         }
 
-        .video-container {
-            position: relative; padding-bottom: 56.25%; /* 16:9 비율 */
-            height: 0; overflow: hidden; max-width: 100%;
-            background: #000; border-radius: 8px;
+        /* --- 반응형 유튜브 영상 스타일 --- */
+        .responsive-video-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 영상 비율 */
+            border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #000;
         }
-        .video-container video {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+        .responsive-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .project-description p {
@@ -135,9 +123,9 @@
     <main class="project-detail">
         <div class="container">
             <section class="project-section project-video-section">
-<div class="video-container">                
-<iframe src="https://www.youtube.com/embed/m6ggwvxa280?si=2RL8Nn5yxOhO2vBu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+                <div class="responsive-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/m6ggwvxa280?si=2RL8Nn5yxOhO2vBu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
 
             <section class="project-section project-description">
