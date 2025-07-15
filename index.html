@@ -7,11 +7,11 @@
     <style>
         /* --- 기본 & 전체 스타일 --- */
         :root {
-            --primary-color: #4A90E2; /* 포인트 컬러: 밝은 파란색 */
+            --primary-color: #4A90E2;
             --dark-text-color: #333333;
             --light-text-color: #666666;
             --bg-color: #FFFFFF;
-            --secondary-bg-color: #f8f9fa; /* 섹션 배경색 */
+            --secondary-bg-color: #f8f9fa;
             --border-color: #e9ecef;
         }
 
@@ -30,7 +30,7 @@
             background-color: var(--bg-color);
             color: var(--dark-text-color);
             line-height: 1.6;
-            padding-top: 70px; /* 고정된 내비게이션 바 높이만큼 패딩 추가 */
+            padding-top: 70px;
         }
 
         .container {
@@ -49,54 +49,34 @@
             text-align: center;
         }
 
-        /* --- 내비게이션 바 스타일 (모든 페이지 공통) --- */
+        /* --- 내비게이션 바 스타일 (공통) --- */
         .main-nav {
-            background-color: white;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
+            background-color: white; padding: 15px 0; position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .main-nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
         .main-nav .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark-text-color);
-            text-decoration: none;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--dark-text-color); text-decoration: none;
         }
         .main-nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+            list-style: none; display: flex; gap: 20px;
         }
         .main-nav ul li a {
-            text-decoration: none;
-            color: var(--light-text-color);
-            font-weight: 500;
-            transition: color 0.3s;
+            text-decoration: none; color: var(--light-text-color);
+            font-weight: 500; transition: color 0.3s;
         }
-        .main-nav ul li a:hover {
-            color: var(--primary-color);
-        }
+        .main-nav ul li a:hover { color: var(--primary-color); }
 
         /* --- 헤더 (자기소개) 섹션 --- */
         .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 70px);
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; min-height: calc(100vh - 70px);
+            text-align: center; color: white;
+            position: relative; overflow: hidden;
         }
         #bg-video {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -115,18 +95,69 @@
             padding: 80px 0;
             background-color: var(--secondary-bg-color);
         }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .project-card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
-        .project-card { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; height: 100%; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .project-card .content { padding: 25px; }
-        .project-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .project-card p { font-size: 0.95rem; color: var(--light-text-color); margin-bottom: 20px; }
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .project-card-link {
+            text-decoration: none; color: inherit;
+            display: block; height: 100%;
+        }
+        .project-card {
+            background-color: var(--bg-color); border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex; /* 내부 콘텐츠 정렬을 위해 추가 */
+            flex-direction: column; /* 내부 콘텐츠를 수직으로 정렬 */
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .project-card .content {
+            padding: 30px;
+            flex-grow: 1; /* 내용이 적어도 카드의 높이를 꽉 채우도록 */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* --- [수정됨] 카드 내부 텍스트 디자인 --- */
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color); /* 제목과 설명 사이 구분선 */
+            display: flex;
+            align-items: center;
+        }
+        .card-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        .project-card p {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            flex-grow: 1; /* 설명 부분이 남는 공간을 모두 차지 */
+            margin-bottom: 20px;
+        }
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background-color: var(--primary-color); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
+        .tag {
+            background-color: var(--secondary-bg-color);
+            color: var(--light-text-color);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
         
         /* --- 푸터 스타일 (공통) --- */
-        footer { text-align: center; padding: 40px 20px; background-color: #333333; color: #ffffff; }
+        footer {
+            text-align: center; padding: 40px 20px;
+            background-color: #333333; color: #ffffff;
+        }
         footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
         footer a:hover { text-decoration: underline; }
 
@@ -136,7 +167,6 @@
     </style>
 </head>
 <body>
-
     <nav class="main-nav">
         <div class="container">
             <a href="index.html" class="nav-logo">Jnil</a>
@@ -161,14 +191,14 @@
     <main>
         <section id="projects">
             <div class="container">
-                <h2 class="fade-in">Featured Projects</h2>
+                <h2 class="fade-in">Welcome to My Cave</h2>
                 <div class="projects-grid">
                     
                     <a href="project.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3>프로젝트 상세 보기</h3>
-                                <p>진행했던 핵심 프로젝트들의 상세한 개발 과정과 결과물을 확인해 보세요.</p>
+                                <h3><span class="card-icon">📖</span>프로젝트 기록</h3>
+                                <p>문제 해결을 위해 고민하고 노력했던 과정들을 기록한 페이지입니다.</p>
                                 <div class="tags">
                                     <span class="tag">Case Study</span>
                                 </div>
@@ -179,8 +209,8 @@
                     <a href="portfolio.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3>포트폴리오 감상하기</h3>
-                                <p>영상과 이미지 중심으로 제작된 시각적 결과물들을 둘러보세요.</p>
+                                <h3><span class="card-icon">📷</span>작업물 쇼케이스</h3>
+                                <p>개인적으로 학습하며 만든 시각적 작업물을 모아두었습니다.</p>
                                 <div class="tags">
                                     <span class="tag">Showcase</span>
                                 </div>
@@ -191,10 +221,10 @@
                     <a href="about.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3>내 소개 (About Me)</h3>
-                                <p>저의 경력, 기술 스택, 그리고 가치관에 대해 더 알아보세요.</p>
+                                <h3><span class="card-icon">👤</span>저는 누구일까요?</h3>
+                                <p>제가 걸어온 길과 앞으로 나아가고 싶은 방향에 대해 소개합니다.</p>
                                 <div class="tags">
-                                    <span class="tag">Profile</span>
+                                    <span class="tag">About Me</span>
                                 </div>
                             </div>
                         </div>
@@ -207,9 +237,7 @@
     <footer>
         <div class="container">
             <p>Contact</p>
-            <p>
-                Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a>
-            </p>
+            <p>Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></p>
             <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
         </div>
     </footer>
@@ -217,7 +245,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const fadeInElements = document.querySelectorAll('.fade-in');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -228,12 +255,10 @@
             }, {
                 threshold: 0.1
             });
-
             fadeInElements.forEach(el => {
                 observer.observe(el);
             });
         });
     </script>
-
 </body>
 </html>
