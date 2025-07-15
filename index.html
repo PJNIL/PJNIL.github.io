@@ -32,15 +32,17 @@
         .main-nav ul li a { text-decoration: none; color: var(--light-text-color); font-weight: 500; transition: color 0.3s; }
         .main-nav ul li a:hover { color: var(--primary-color); }
 
-        /* --- 헤더 섹션 --- */
+        /* --- [수정됨] 헤더 섹션 --- */
         .hero {
             display: flex;
-            align-items: flex-end;
+            align-items: flex-end; /* 텍스트를 아래쪽에 배치 */
+            justify-content: flex-start; /* 텍스트를 왼쪽에 배치 */
             min-height: 85vh; /* [수정됨] 화면 높이를 85%로 줄여 아래 콘텐츠가 보이도록 함 */
             color: white;
             position: relative;
             overflow: hidden;
             padding: 5vh 5vw;
+            text-align: left; /* 텍스트 왼쪽 정렬 */
         }
         #bg-video {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -59,10 +61,10 @@
         .hero .hero-content {
             position: relative;
             z-index: 1;
-            text-align: left;
             max-width: 1100px;
             width: 100%;
             margin: 0;
+            padding-bottom: 5vh; /* 하단 여백 조정 */
         }
         .hero h1 {
             font-size: 2.8rem;
@@ -209,7 +211,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const fadeInElements = document.querySelectorAll('.fade-in');
+            // Hero 섹션의 콘텐츠는 바로 보이도록 처리
+            const heroContent = document.querySelector('.hero .hero-content');
+            if(heroContent) {
+                setTimeout(() => {
+                    heroContent.classList.add('visible');
+                }, 100); // 아주 약간의 딜레이로 부드러운 느낌
+            }
+
+            // 스크롤 시 나타나는 요소들
+            const scrollFadeInElements = document.querySelectorAll('main .fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -220,7 +231,7 @@
             }, {
                 threshold: 0.1
             });
-            fadeInElements.forEach(el => {
+            scrollFadeInElements.forEach(el => {
                 observer.observe(el);
             });
         });
