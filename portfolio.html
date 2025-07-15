@@ -98,3 +98,118 @@
         }
         .lightbox-close {
             position: absolute; top: 25px; right: 35px;
+            color: #f1f1f1; font-size: 40px; font-weight: bold;
+            transition: 0.3s; cursor: pointer;
+        }
+
+        /* --- 푸터 (공통) --- */
+        footer { text-align: center; padding: 40px 20px; background-color: #333333; color: #ffffff; }
+        footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">Jnil</a>
+            <ul>
+                <li><a href="index.html">Main</a></li>
+                <li><a href="project.html">Project</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h2>Portfolio: Cliff Temple</h2>
+        </div>
+    </header>
+
+    <main class="case-study-main">
+        <div class="container">
+            <div class="responsive-video-wrapper">
+                <iframe src="https://www.youtube.com/embed/P8K_inNfEQw?si=whuhoA936na0ivhi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <section class="case-study-intro">
+                <h3>Cliff Temple</h3>
+                <p>이곳에 작업물에 대한 전반적인 컨셉과 설명을 요약해서 작성합니다. 방문자가 이 작업물을 통해 무엇을 느꼈으면 하는지, 어떤 목표를 가지고 제작했는지 등을 담아주세요.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Unreal Engine 5.4</span>
+                    <span class="tech-tag">MS Office</span>
+                    <span class="tech-tag">GPT-4o</span>
+                </div>
+            </section>
+
+            <section class="process-step">
+                <h4>제작 과정 (Process)</h4>
+                <p>이 포트폴리오를 만들게 된 계기나 아이디어 구상 단계에 대해 서술합니다. 레퍼런스 이미지나 간단한 스케치를 함께 보여주면 좋습니다.</p>
+                <div class="gallery-grid">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Reference+Image+1" alt="레퍼런스 이미지 1">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Initial+Sketch" alt="초기 스케치">
+                </div>
+            </section>
+
+            <section class="process-step">
+                <h4>주요 작업 내용 (Details)</h4>
+                <p>모델링, 텍스처링, 라이팅 등 구체적인 작업 내용을 단계별로 설명합니다. 어떤 기술적 도전을 했고, 어떻게 해결했는지 보여주면 전문성을 어필할 수 있습니다.</p>
+                 <div class="gallery-grid">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Modeling+WIP" alt="모델링 과정">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Texturing+WIP" alt="텍스처링 과정">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Lighting+Setup" alt="라이팅 셋업">
+                </div>
+            </section>
+
+            <section class="process-step">
+                <h4>최종 결과물 (Final Renders)</h4>
+                <div class="gallery-grid">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Final+Render+1" alt="최종 결과물 1">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Final+Render+2" alt="최종 결과물 2">
+                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Final+Render+3" alt="최종 결과물 3">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Contact</p>
+            <p>Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        // 라이트박스 갤러리 기능
+        document.addEventListener("DOMContentLoaded", function() {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const galleryImages = document.querySelectorAll(".gallery-image");
+            const closeBtn = document.querySelector(".lightbox-close");
+
+            galleryImages.forEach(image => {
+                image.addEventListener("click", function() {
+                    lightbox.style.display = "block";
+                    lightboxImg.src = this.src;
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.style.display = "none";
+            }
+
+            closeBtn.addEventListener("click", closeLightbox);
+            lightbox.addEventListener("click", function(event) {
+                if (event.target === lightbox) { closeLightbox(); }
+            });
+        });
+    </script>
+</body>
+</html>
