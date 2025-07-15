@@ -9,12 +9,10 @@
         :root {
             --primary-color: #4A90E2;
             --navy-color: #2c3e50;
-            --dark-text-color: #333333;
-            --light-text-color: #5a6673; /* 가독성을 위해 약간 진하게 조정 */
-            --bg-color: #f8f9fa; /* 흰색보다 부드러운 배경색으로 변경 */
-            --card-bg-color: #FFFFFF;
+            --dark-text-color: #212529; /* 더 진한 검은색으로 선명도 증가 */
+            --light-text-color: #5a6673;
+            --bg-color: #FFFFFF; /* 순백색 배경으로 미니멀리즘 강조 */
             --border-color: #e9ecef;
-            --shadow: 0 4px 15px rgba(0,0,0,0.05); /* 부드러운 그림자 */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -22,189 +20,165 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--dark-text-color);
-            line-height: 1.7; /* 줄간격 살짝 넓혀서 가독성 확보 */
+            line-height: 1.7;
             padding-top: 70px;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; } /* 콘텐츠 폭을 약간 넓힘 */
+        .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3, h4, h5 { font-weight: 600; }
         a { color: var(--primary-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         /* --- 내비게이션 바 (유지) --- */
         .main-nav {
-            background-color: var(--navy-color); padding: 15px 0; position: fixed;
-            top: 0; left: 0; width: 100%; z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--bg-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color); /* 네비바와 본문 구분선 */
         }
         .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; }
-        .main-nav ul { list-style: none; display: flex; gap: 20px; }
-        .main-nav ul li a { text-decoration: none; color: #e0e0e0; font-weight: 500; transition: color 0.3s; }
-        .main-nav ul li a:hover { color: #FFFFFF; text-decoration: none; }
-
-        /* --- 페이지 헤더 (유지) --- */
-        .page-header {
-            padding: 50px 0; background-color: var(--navy-color);
-            color: #FFFFFF; text-align: center;
+        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--navy-color); text-decoration: none; }
+        .main-nav ul { list-style: none; display: flex; gap: 25px; }
+        .main-nav ul li a { text-decoration: none; color: var(--light-text-color); font-weight: 500; transition: color 0.3s; }
+        .main-nav ul li a:hover { color: var(--navy-color); }
+        
+        /* --- [수정] 페이지 헤더 --- */
+        .profile-header {
+            padding: 80px 0;
+            text-align: center;
         }
-        .page-header h2 { font-size: 2.8rem; margin: 0; }
-
-        /* --- 메인 콘텐츠 섹션 --- */
-        .content-section { padding: 60px 0; }
-
-        /* --- [수정] About Me 상단 레이아웃 --- */
-        .about-intro-grid {
-            display: grid;
-            grid-template-columns: 200px 1fr; /* 좌측: 이미지, 우측: 텍스트 */
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 60px;
+        .profile-header h3 {
+            font-size: 3.5rem; /* 이름 강조 */
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--navy-color);
         }
-        .profile-image-wrapper {
-            width: 200px;
-            height: 200px;
-        }
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%; /* 원형 이미지 */
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 5px solid var(--card-bg-color);
-        }
-        .profile-intro h3 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .profile-intro .intro-text {
-            font-size: 1.1rem;
+        .profile-header .intro-text {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
             color: var(--light-text-color);
+            line-height: 1.8;
         }
 
-        /* --- [수정] 카드 UI 적용 --- */
-        .content-card {
-            background: var(--card-bg-color);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            margin-bottom: 40px;
+        /* --- [수정] 콘텐츠 그리드 레이아웃 --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr; /* 좌측 라벨, 우측 콘텐츠 */
+            gap: 40px 60px; /* 세로, 가로 간격 */
+            padding: 40px 0;
         }
+        .grid-label {
+            text-align: right;
+            padding-top: 10px;
+        }
+        .grid-label h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy-color);
+            position: sticky; /* 스크롤 시 따라오도록 */
+            top: 110px; /* 네비게이션바 높이만큼 여유 */
+        }
+        .grid-content {
+            padding-top: 10px;
+            border-top: 2px solid var(--border-color); /* 각 섹션 구분선 */
+        }
+        .content-grid > .grid-label:first-of-type + .grid-content {
+             border-top: none; /* 첫번째 섹션의 상단 선은 제거 */
+        }
+
 
         /* --- [수정] Info List 스타일 --- */
-        .content-card h4 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .content-card h4::after { /* 제목 밑줄 포인트 */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
         .info-list {
             list-style: none;
             padding: 0;
         }
         .info-list li {
             display: flex;
-            align-items: center;
             margin-bottom: 15px;
             font-size: 1rem;
         }
-        .info-list li:last-child { margin-bottom: 0; }
         .info-list .label {
             font-weight: 600;
             width: 80px;
+        }
+        .info-list a {
             color: var(--dark-text-color);
-            display: inline-flex; /* 아이콘과 텍스트 정렬 */
-            align-items: center;
-            gap: 8px; /* 아이콘과 텍스트 간격 */
+            transition: color 0.2s;
+        }
+        .info-list a:hover {
+            color: var(--primary-color);
         }
 
         /* --- [수정] Skills Graph 스타일 --- */
-        .skills-graph { list-style: none; padding: 0; }
+        .skills-graph { list-style: none; padding: 0; margin-top: -10px; /* 라벨과 위치 맞춤 */}
         .skills-graph li { margin-bottom: 25px; }
         .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 1rem;
-            font-weight: 500;
+            display: flex; justify-content: space-between;
+            margin-bottom: 10px; font-size: 0.95rem; font-weight: 500;
         }
         .skill-bar {
-            width: 100%;
-            height: 12px; /* 바 두께 살짝 증가 */
-            background-color: var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
+            width: 100%; height: 8px;
+            background-color: #f0f0f0; border-radius: 4px; overflow: hidden;
         }
         .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, #4A90E2, #0056b3); /* 그라디언트 적용 */
-            border-radius: 6px;
-            width: 0;
+            height: 100%; background-color: var(--navy-color);
+            border-radius: 4px; width: 0;
             transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* --- [수정] 경력 타임라인 스타일 --- */
         .timeline {
-            position: relative;
-            padding-left: 40px;
-            border-left: 3px solid var(--border-color);
+            position: relative; border-left: 2px solid var(--border-color);
+            padding: 0 0 0 30px; margin-top: -10px;
         }
         .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: var(--bg-color);
-            border-radius: 8px;
-            border: 1px solid #f0f0f0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .timeline-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            position: relative; margin-bottom: 40px;
         }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -49px;
-            top: 28px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--card-bg-color);
-            border: 4px solid var(--primary-color);
+            content: ''; position: absolute;
+            left: -38px; top: 6px;
+            width: 11px; height: 11px;
+            border-radius: 50%; background: var(--bg-color);
+            border: 3px solid var(--navy-color);
         }
-        .timeline-item h5 { font-size: 1.25rem; margin-bottom: 5px; color: var(--primary-color); }
-        .timeline-item .meta { color: var(--light-text-color); margin-bottom: 15px; font-size: 0.9rem; }
+        .timeline-item h5 { font-size: 1.15rem; color: var(--dark-text-color); font-weight: 700; }
+        .timeline-item .meta { color: var(--light-text-color); margin-bottom: 10px; font-size: 0.9rem; }
         .timeline-item ul { padding-left: 20px; }
-        .timeline-item ul li { margin-bottom: 5px; }
-
+        .timeline-item ul li { margin-bottom: 5px; font-size: 0.95rem; }
+        
         /* --- 푸터 (유지) --- */
         footer {
             text-align: center; padding: 40px 20px;
-            background-color: var(--navy-color); color: #ccc;
+            background-color: #f8f9fa; color: var(--light-text-color);
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
         }
-        footer a { color: #FFFFFF; }
+        footer a { color: var(--navy-color); font-weight: 500; }
 
         /* --- 반응형 디자인 --- */
         @media (max-width: 768px) {
-            .about-intro-grid {
+            .content-grid {
                 grid-template-columns: 1fr; /* 모바일에서는 1단 구조로 변경 */
-                text-align: center;
+                gap: 0;
             }
-            .profile-image-wrapper {
-                margin: 0 auto;
+            .grid-label {
+                text-align: left;
+                padding-top: 0;
             }
-            .content-card { padding: 30px 25px; }
+            .grid-label h4 {
+                position: static; /* sticky 해제 */
+                margin-bottom: 20px;
+            }
+            .grid-content {
+                padding-top: 0;
+                border-top: none; /* 모바일에선 구분선 제거 */
+                padding-bottom: 50px; /* 섹션 간격 확보 */
+            }
         }
     </style>
 </head>
@@ -222,98 +196,99 @@
         </div>
     </nav>
 
-    <header class="page-header">
+    <main>
+        <header class="profile-header">
+            <div class="container">
+                <h3>박준일</h3>
+                <p class="intro-text">
+                    레벨을 통해 플레이어와 게임이 가장 깊게 교감하는 '의미 있는 순간'을 만들고 싶습니다. 저는 레벨이 의도된 경험과 세밀한 설계로 유저의 경험을 만들어내는 무대라고 믿습니다.
+                </p>
+            </div>
+        </header>
+
         <div class="container">
-            <h2>About Me</h2>
-        </div>
-    </header>
+            <div class="content-grid">
 
-    <main class="content-section">
-        <div class="container">
-
-            <div class="about-intro-grid">
-                <div class="profile-image-wrapper">
-                    <img src="https://via.placeholder.com/200" alt="박준일 프로필 사진" class="profile-image">
+                <div class="grid-label">
+                    <h4>Information</h4>
                 </div>
-                <div class="profile-intro">
-                    <h3>박준일</h3>
-                    <p class="intro-text">
-                        레벨을 통해 플레이어와 게임이 가장 깊게 교감하는 '의미 있는 순간'을 만들고 싶습니다. 저는 레벨이 의도된 경험과 세밀한 설계로 유저의 경험을 만들어내는 무대라고 믿습니다.
-                    </p>
+                <div class="grid-content">
+                    <ul class="info-list">
+                        <li><span class="label">영문명</span> Park, Jun-Il</li>
+                        <li><span class="label">연락처</span> 010-9229-9848</li>
+                        <li><span class="label">이메일</span> <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></li>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="content-card">
-                <h4>Information & Skills</h4>
-                <ul class="info-list">
-                    <li><span class="label">🧑🏻‍💻 영문명</span> Park, Jun-Il</li>
-                    <li><span class="label">📞 연락처</span> 010-9229-9848</li>
-                    <li><span class="label">✉️ 이메일</span> <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></li>
-                </ul>
-                <hr style="border:0; border-top:1px solid var(--border-color); margin: 30px 0;">
-                <ul class="skills-graph">
-                    <li>
-                        <div class="skill-info"><span>MS Office</span> <span>90%</span></div>
-                        <div class="skill-bar"><div class="skill-level" data-level="90%"></div></div>
-                    </li>
-                    <li>
-                        <div class="skill-info"><span>Unity</span> <span>85%</span></div>
-                        <div class="skill-bar"><div class="skill-level" data-level="85%"></div></div>
-                    </li>
-                    <li>
-                        <div class="skill-info"><span>AI</span> <span>80%</span></div>
-                        <div class="skill-bar"><div class="skill-level" data-level="80%"></div></div>
-                    </li>
-                    <li>
-                        <div class="skill-info"><span>Unreal Engine</span> <span>60%</span></div>
-                        <div class="skill-bar"><div class="skill-level" data-level="60%"></div></div>
-                    </li>
-                </ul>
-            </div>
+                <div class="grid-label">
+                    <h4>Skills</h4>
+                </div>
+                <div class="grid-content">
+                    <ul class="skills-graph">
+                        <li>
+                            <div class="skill-info"><span>MS Office</span> <span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>Unity</span> <span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>AI</span> <span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>Unreal Engine</span> <span>60%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="60%"></div></div>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="content-card">
-                <h4>Experience</h4>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h5>메틴:파멸의 서곡 개발/라이브 서비스</h5>
-                        <p class="meta">GNISOFT | 2023.11 - 현재 (날짜 확인 필요)</p>
-                        <ul>
-                            <li>라이브 서비스 및 정식 출시 참여</li>
-                            <li>프리프로덕션 단계부터 프로젝트 참여</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-item">
-                        <h5>천상비M 라이브 서비스</h5>
-                        <p class="meta">GNISOFT | 2023.07 - 2023.11</p>
-                        <ul>
-                            <li>'4차 신장 변신 퀘스트' 제작</li>
-                            <li>외전 지역 '수라도' 제작</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-item">
-                        <h5>경일 게임 아카데미</h5>
-                        <p class="meta">게임 기획 33기 | 2023.01 - 2023.06</p>
-                        <ul>
-                            <li>유니티 프로젝트 'alchemist.ro' (Level Design)</li>
-                            <li>펑크랜드 'Malice' 및 보드게임 '데스페라도' (PD)</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-item">
-                        <h5>한림대학교</h5>
-                        <p class="meta">경영학과 | 2016.03 - 2023.03</p>
-                        <ul>
-                            <li>데이터 분석 프로젝트 - 배틀그라운드: 지표로 확인하는 지형과 K/D의 상관관계</li>
-                        </ul>
+                <div class="grid-label">
+                    <h4>Experience</h4>
+                </div>
+                <div class="grid-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>메틴:파멸의 서곡 개발/라이브 서비스</h5>
+                            <p class="meta">GNISOFT | 2023.11 - 현재 (날짜 확인 필요)</p>
+                            <ul>
+                                <li>라이브 서비스 및 정식 출시 참여</li>
+                                <li>프리프로덕션 단계부터 프로젝트 참여</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>천상비M 라이브 서비스</h5>
+                            <p class="meta">GNISOFT | 2023.07 - 2023.11</p>
+                            <ul>
+                                <li>'4차 신장 변신 퀘스트' 제작</li>
+                                <li>외전 지역 '수라도' 제작</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>경일 게임 아카데미</h5>
+                            <p class="meta">게임 기획 33기 | 2023.01 - 2023.06</p>
+                            <ul>
+                                <li>유니티 프로젝트 'alchemist.ro' (Level Design)</li>
+                                <li>펑크랜드 'Malice' 및 보드게임 '데스페라도' (PD)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>한림대학교</h5>
+                            <p class="meta">경영학과 | 2016.03 - 2023.03</p>
+                            <ul>
+                                <li>데이터 분석 프로젝트 - 배틀그라운드: 지표로 확인하는 지형과 K/D의 상관관계</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>Contact</p>
             <p>Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></p>
             <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. Jnil. All rights reserved.</p>
         </div>
