@@ -3,50 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jnil's Cave - Main</title>
+    <title>Jnil's Portfolio</title>
     <style>
         /* --- 기본 & 전체 스타일 --- */
         :root {
-            --primary-color: #4A90E2;
+            --primary-color: #4A90E2; /* 포인트 컬러: 밝은 파란색 */
             --dark-text-color: #333333;
             --light-text-color: #666666;
             --bg-color: #FFFFFF;
-            --secondary-bg-color: #f8f9fa;
+            --secondary-bg-color: #f8f9fa; /* 섹션 배경색 */
             --border-color: #e9ecef;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--dark-text-color);
             line-height: 1.6;
-            padding-top: 70px;
+            padding-top: 70px; /* 고정된 내비게이션 바 높이만큼 패딩 추가 */
         }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            font-weight: 600;
-        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-weight: 600; }
         
+        /* [수정] h2 제목 스타일 */
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
             text-align: center;
+            color: var(--dark-text-color);
         }
 
         /* --- 내비게이션 바 스타일 (공통) --- */
@@ -55,20 +40,10 @@
             top: 0; left: 0; width: 100%; z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .main-nav .container {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .main-nav .nav-logo {
-            font-size: 1.5rem; font-weight: 700;
-            color: var(--dark-text-color); text-decoration: none;
-        }
-        .main-nav ul {
-            list-style: none; display: flex; gap: 20px;
-        }
-        .main-nav ul li a {
-            text-decoration: none; color: var(--light-text-color);
-            font-weight: 500; transition: color 0.3s;
-        }
+        .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--dark-text-color); text-decoration: none; }
+        .main-nav ul { list-style: none; display: flex; gap: 20px; }
+        .main-nav ul li a { text-decoration: none; color: var(--light-text-color); font-weight: 500; transition: color 0.3s; }
         .main-nav ul li a:hover { color: var(--primary-color); }
 
         /* --- 헤더 (자기소개) 섹션 --- */
@@ -88,71 +63,71 @@
             background-color: rgba(0, 0, 0, 0.4); z-index: 1;
         }
         .hero .container { position: relative; z-index: 2; }
-        .hero h1 { font-size: 3.5rem; }
+        /* [수정] 헤더 텍스트 스타일 */
+        .hero h1 { font-size: 3rem; }
+        .hero p {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+        }
 
         /* --- Projects 섹션 스타일 --- */
         #projects {
             padding: 80px 0;
-            background-color: var(--secondary-bg-color);
+            background-color: var(--bg-color);
         }
         .projects-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-        .project-card-link {
-            text-decoration: none; color: inherit;
-            display: block; height: 100%;
-        }
+        .project-card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
         .project-card {
-            background-color: var(--bg-color); border: 1px solid var(--border-color);
+            background-color: var(--secondary-bg-color);
+            border: 1px solid var(--border-color);
             border-radius: 8px; overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
             height: 100%;
-            display: flex; /* 내부 콘텐츠 정렬을 위해 추가 */
-            flex-direction: column; /* 내부 콘텐츠를 수직으로 정렬 */
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .project-card .content {
-            padding: 30px;
-            flex-grow: 1; /* 내용이 적어도 카드의 높이를 꽉 채우도록 */
             display: flex;
             flex-direction: column;
         }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .project-card .content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
         
-        /* --- [수정됨] 카드 내부 텍스트 디자인 --- */
+        /* [수정됨] 카드 내부 텍스트 디자인 */
         .project-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color); /* 제목과 설명 사이 구분선 */
-            display: flex;
-            align-items: center;
-        }
-        .card-icon {
-            font-size: 1.2rem;
-            margin-right: 10px;
-            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--dark-text-color);
         }
         .project-card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--light-text-color);
-            flex-grow: 1; /* 설명 부분이 남는 공간을 모두 차지 */
-            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .tag {
-            background-color: var(--secondary-bg-color);
-            color: var(--light-text-color);
-            border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 5px;
+            font-size: 0.75rem;
             font-weight: 500;
         }
-        
+
         /* --- 푸터 스타일 (공통) --- */
         footer {
             text-align: center; padding: 40px 20px;
@@ -162,7 +137,7 @@
         footer a:hover { text-decoration: underline; }
 
         /* --- 애니메이션 --- */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -184,21 +159,22 @@
             <source src="video/background.mp4" type="video/mp4">
         </video>
         <div class="container fade-in">
-            <h1>안녕하세요.</h1>
+            <h1>Jnil's Portfolio</h1>
+            <p>끊임없이 배우고 성장하며 만들어온 결과물을 공유합니다.</p>
         </div>
     </header>
 
     <main>
         <section id="projects">
             <div class="container">
-                <h2 class="fade-in">Welcome to My Cave</h2>
+                <h2 class="fade-in">Key Contents</h2>
                 <div class="projects-grid">
                     
                     <a href="project.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3><span class="card-icon">📖</span>프로젝트 기록</h3>
-                                <p>문제 해결을 위해 고민하고 노력했던 과정들을 기록한 페이지입니다.</p>
+                                <h3>Project Insights</h3>
+                                <p>참여했던 프로젝트들의 목표, 과정, 그리고 결과물에 대한 상세한 기록입니다.</p>
                                 <div class="tags">
                                     <span class="tag">Case Study</span>
                                 </div>
@@ -209,10 +185,10 @@
                     <a href="portfolio.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3><span class="card-icon">📷</span>작업물 쇼케이스</h3>
-                                <p>개인적으로 학습하며 만든 시각적 작업물을 모아두었습니다.</p>
+                                <h3>Visual Showcase</h3>
+                                <p>개인적인 학습과 노력을 통해 제작한 영상 및 이미지 기반의 작업물입니다.</p>
                                 <div class="tags">
-                                    <span class="tag">Showcase</span>
+                                    <span class="tag">Portfolio</span>
                                 </div>
                             </div>
                         </div>
@@ -221,10 +197,10 @@
                     <a href="about.html" class="project-card-link">
                         <div class="project-card fade-in">
                             <div class="content">
-                                <h3><span class="card-icon">👤</span>저는 누구일까요?</h3>
-                                <p>제가 걸어온 길과 앞으로 나아가고 싶은 방향에 대해 소개합니다.</p>
+                                <h3>About Me</h3>
+                                <p>저의 경험, 보유 기술, 그리고 추구하는 가치에 대해 더 자세히 알아보세요.</p>
                                 <div class="tags">
-                                    <span class="tag">About Me</span>
+                                    <span class="tag">Profile</span>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +225,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
