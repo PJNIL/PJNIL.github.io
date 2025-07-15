@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jnil - About</title>
     <style>
-        /* --- 기본 & 전체 스타일 --- */
         :root {
-            --primary-color: #4A90E2;
-            --navy-color: #2c3e50; /* 남색 계열 색상 정의 */
-            --dark-text-color: #333333;
-            --light-text-color: #666666;
-            --bg-color: #FFFFFF;
-            --secondary-bg-color: #f8f9fa;
-            --border-color: #e9ecef;
+            --primary-color: #4A90E2; --navy-color: #2c3e50;
+            --dark-text-color: #333333; --light-text-color: #666666;
+            --bg-color: #FFFFFF; --secondary-bg-color: #f8f9fa; --border-color: #e9ecef;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -22,97 +17,108 @@
             background-color: var(--bg-color); color: var(--dark-text-color);
             line-height: 1.6; padding-top: 70px;
         }
-        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; } /* 너비를 약간 줄여 가독성 확보 */
         h1, h2, h3, h4, h5 { font-weight: 600; }
 
-        /* --- 내비게이션 바 스타일 (공통) --- */
+        /* --- 내비게이션 바 (공통) --- */
         .main-nav {
-            background-color: var(--navy-color); /* [변경] 배경색을 남색으로 변경 */
-            padding: 15px 0; position: fixed;
+            background-color: var(--navy-color); padding: 15px 0; position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; } /* [변경] 로고 색상을 흰색으로 */
+        .main-nav .nav-logo { font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; }
         .main-nav ul { list-style: none; display: flex; gap: 20px; }
-        .main-nav ul li a { text-decoration: none; color: #e0e0e0; font-weight: 500; transition: color 0.3s; } /* [변경] 링크 색상을 밝은 회색으로 */
-        .main-nav ul li a:hover { color: #FFFFFF; } /* [변경] 링크 호버 색상을 흰색으로 */
+        .main-nav ul li a { text-decoration: none; color: #e0e0e0; font-weight: 500; transition: color 0.3s; }
+        .main-nav ul li a:hover { color: #FFFFFF; }
         
-        /* --- 페이지 헤더 스타일 --- */
+        /* --- 페이지 헤더 --- */
         .page-header {
-            padding: 50px 0;
-            background-color: var(--navy-color); /* [변경] 배경색을 남색으로 변경 */
-            color: #FFFFFF; /* [추가] 내부 텍스트 색상을 흰색으로 */
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            padding: 50px 0; background-color: var(--navy-color);
+            color: #FFFFFF; text-align: center;
         }
         .page-header h2 { font-size: 2.8rem; margin: 0; }
 
-        .content-section {
-            padding: 80px 0;
-        }
-
-        /* --- [새로 디자인됨] About Me 레이아웃 --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 250px 1fr; /* 왼쪽 프로필(고정폭), 오른쪽 정보(가변폭) */
-            align-items: start;
-            gap: 60px;
-        }
+        .content-section { padding: 80px 0; }
         
-        .profile-pic-wrapper img {
-            width: 100%;
-            border-radius: 50%; /* 프로필 사진을 원형으로 */
-            border: 6px solid white;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        }
-
+        /* --- About Me 레이아웃 --- */
         .profile-info h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
+            text-align: center;
         }
         .profile-info .intro-text {
             font-size: 1.1rem;
             color: var(--light-text-color);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .info-list {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            padding: 20px;
+            background: var(--secondary-bg-color);
+            border-radius: 8px;
         }
         .info-list li {
             display: flex;
             align-items: center;
             margin-bottom: 12px;
+            font-size: 0.95rem;
         }
+        .info-list li:last-child { margin-bottom: 0; }
         .info-list .label {
             font-weight: 600;
             width: 80px;
             color: var(--dark-text-color);
         }
-
-        .experience-section h4 {
-            font-size: 1.6rem;
+        
+        /* --- [새로 추가됨] 기술 역량 그래프 --- */
+        .skills-section h4, .experience-section h4 {
+            font-size: 1.8rem;
+            text-align: center;
             margin-top: 50px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
+        }
+        .skills-graph {
+            list-style: none;
+            padding: 0;
+        }
+        .skills-graph li {
+            margin-bottom: 20px;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            width: 0; /* 초기 너비는 0 */
+            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* 부드러운 애니메이션 */
         }
         
-        /* 경력 타임라인 스타일 */
+        /* --- 경력 타임라인 스타일 --- */
         .timeline {
             position: relative;
             padding-left: 30px;
-        }
-        .timeline::before { /* 타임라인의 세로선 */
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: var(--border-color);
+            border-left: 2px solid var(--border-color); /* 세로선을 border로 변경 */
         }
         .timeline-item {
             position: relative;
@@ -121,42 +127,19 @@
         .timeline-item::before { /* 타임라인의 점 */
             content: '';
             position: absolute;
-            left: -28px;
+            left: -37px; /* 위치 조정 */
             top: 5px;
             width: 12px;
             height: 12px;
             border-radius: 50%;
             background: var(--primary-color);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--primary-color);
+            border: 3px solid var(--bg-color);
         }
         .timeline-item h5 { font-size: 1.2rem; }
         .timeline-item .meta { color: var(--light-text-color); margin-bottom: 10px; font-size: 0.9rem; }
         .timeline-item ul { padding-left: 20px; }
-        
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr; /* 1단으로 변경 */
-            }
-            .profile-pic-wrapper {
-                width: 200px;
-                margin: 0 auto 40px auto;
-            }
-            .profile-info {
-                text-align: center;
-            }
-            .info-list li {
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-            .info-list .label { width: auto; margin-bottom: 5px; }
-            .timeline { padding-left: 20px; }
-            .timeline-item::before { left: -24px; }
-        }
 
-        /* --- 푸터 스타일 (공통) --- */
+        /* --- 푸터 (공통) --- */
         footer {
             text-align: center; padding: 40px 20px;
             background-color: #333333; color: #ffffff;
@@ -187,41 +170,60 @@
 
     <main class="content-section">
         <div class="container">
-            <div class="about-grid">
-                <aside class="profile-pic-wrapper">
-                    <img src="https://via.placeholder.com/250x250.png?text=Profile+Pic" alt="프로필 사진">
-                </aside>
+            <div class="profile-info">
+                <h3>박준일</h3>
+                <p class="intro-text">
+                    이곳에 자신을 나타내는 한두 문단의 소개글을 작성합니다. 어떤 분야에 관심이 많고, 어떤 개발자/제작자로 성장하고 싶은지 자신의 비전과 가치관을 보여주세요.
+                </p>
+                <ul class="info-list">
+                    <li><span class="label">영문명</span> Park, Jun-Il</li>
+                    <li><span class="label">연락처</span> 010-9229-9847</li>
+                    <li><span class="label">이메일</span> <a href="mailto:pjipro2@naver.com" style="color:inherit; text-decoration:none;">pjipro2@naver.com</a></li>
+                </ul>
 
-                <div class="profile-info">
-                    <h3>박준일</h3>
-                    <p class="intro-text">
-                        이곳에 자신을 나타내는 한두 문단의 소개글을 작성합니다. 어떤 분야에 관심이 많고, 어떤 개발자/제작자로 성장하고 싶은지 자신의 비전과 가치관을 보여주세요.
-                    </p>
-                    <ul class="info-list">
-                        <li><span class="label">영문명</span> Park, Jun-Il</li>
-                        <li><span class="label">연락처</span> 010-9229-9847</li>
-                        <li><span class="label">이메일</span> pjipro2@naver.com</li>
+                <div class="skills-section">
+                    <h4>기술 역량</h4>
+                    <ul class="skills-graph">
+                        <li>
+                            <div class="skill-info"><span>Unreal Engine</span> <span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>3ds Max</span> <span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>Photoshop</span> <span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>ZBrush</span> <span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="75%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-info"><span>C++</span> <span>60%</span></div>
+                            <div class="skill-bar"><div class="skill-level" data-level="60%"></div></div>
+                        </li>
                     </ul>
+                </div>
 
-                    <div class="experience-section">
-                        <h4>경력 사항</h4>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <h5>[직책]</h5>
-                                <p class="meta">[회사명] | [근무 기간, 예: 2022.03 - 현재]</p>
-                                <ul>
-                                    <li>이곳에 주요 업무 내용과 성과를箇条書き(개조식)으로 작성합니다.</li>
-                                    <li>수치화할 수 있는 성과가 있다면 함께 작성하는 것이 좋습니다.</li>
-                                    <li>예: 신규 프로젝트의 UI 개발을 주도하여 사용자 만족도 20% 향상</li>
-                                </ul>
-                            </div>
-                            <div class="timeline-item">
-                                <h5>[직책]</h5>
-                                <p class="meta">[이전 회사명] | [근무 기간, 예: 2020.01 - 2022.02]</p>
-                                <ul>
-                                    <li>이곳에 이전 직장에서의 주요 업무 내용과 성과를 작성합니다.</li>
-                                </ul>
-                            </div>
+                <div class="experience-section">
+                    <h4>경력 사항</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>[직책]</h5>
+                            <p class="meta">[회사명] | [근무 기간, 예: 2022.03 - 현재]</p>
+                            <ul>
+                                <li>이곳에 주요 업무 내용과 성과를箇条書き(개조식)으로 작성합니다.</li>
+                                <li>수치화할 수 있는 성과가 있다면 함께 작성하는 것이 좋습니다.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>[직책]</h5>
+                            <p class="meta">[이전 회사명] | [근무 기간, 예: 2020.01 - 2022.02]</p>
+                            <ul>
+                                <li>이곳에 이전 직장에서의 주요 업무 내용과 성과를 작성합니다.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -237,5 +239,26 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const skillLevels = document.querySelectorAll(".skill-level");
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        element.style.width = element.dataset.level;
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.5 // 그래프가 50% 보였을 때 애니메이션 실행
+            });
+
+            skillLevels.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
