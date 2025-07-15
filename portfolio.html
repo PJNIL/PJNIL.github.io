@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio - Portfolio</title>
+    <title>My Portfolio - Cliff Temple</title>
     <style>
         :root {
             --primary-color: #4A90E2; --dark-text-color: #333333; --light-text-color: #666666;
@@ -38,138 +38,63 @@
         }
         .page-header h2 { font-size: 2.8rem; margin: 0; }
         
-        /* --- 포트폴리오 아이템 레이아웃 --- */
-        .portfolio-item {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 50px;
-            padding: 80px 0;
+        /* --- [새로 디자인됨] 케이스 스터디 레이아웃 --- */
+        .case-study-main {
+            padding: 60px 0;
         }
-        .portfolio-item + .portfolio-item {
-            border-top: 1px solid var(--border-color);
+        .responsive-video-wrapper {
+            position: relative; overflow: hidden; width: 100%;
+            padding-top: 56.25%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #000; margin-bottom: 40px;
+        }
+        .responsive-video-wrapper iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; border: 0;
         }
 
-        .portfolio-description {
-            position: -webkit-sticky; position: sticky;
-            top: 100px;
-            align-self: start; 
+        .case-study-intro {
+            text-align: center;
+            margin-bottom: 80px;
         }
-        .portfolio-description h3 { font-size: 2rem; margin-bottom: 15px; }
-        .portfolio-description p { color: var(--light-text-color); margin-bottom: 20px; }
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .case-study-intro h3 { font-size: 2.2rem; margin-bottom: 15px; }
+        .case-study-intro p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px auto; color: var(--light-text-color); }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .tech-tag {
             background-color: var(--secondary-bg-color); color: var(--primary-color);
             padding: 5px 12px; border-radius: 15px; font-size: 0.8rem;
             font-weight: 500; border: 1px solid var(--border-color);
         }
+
+        .process-step {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .process-step h4 { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+        .process-step p { margin-bottom: 30px; }
         
-        /* --- [추가됨] 반응형 유튜브 영상 스타일 --- */
-        .responsive-video-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 비율 */
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
-        .responsive-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+        .gallery-grid img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-radius: 4px; border: 1px solid var(--border-color);
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
         }
+        .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        .portfolio-gallery img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+        /* 라이트박스 스타일 */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.85);
+            -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
         }
-
-        @media (max-width: 900px) {
-            .portfolio-item { grid-template-columns: 1fr; gap: 30px; }
-            .portfolio-description { position: static; top: auto; margin-bottom: 40px; }
+        .lightbox-content {
+            margin: auto; display: block; max-width: 80%; max-height: 80%;
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
         }
-
-        /* --- 푸터 (공통) --- */
-        footer {
-            text-align: center; padding: 40px 20px;
-            background-color: #333333; color: #ffffff;
-        }
-        footer a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
-        footer a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-
-    <nav class="main-nav">
-        <div class="container">
-            <a href="index.html" class="nav-logo">Jnil</a>
-            <ul>
-                <li><a href="index.html">Main</a></li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="page-header">
-        <div class="container">
-            <h2>Portfolio</h2>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="portfolio-item">
-                <aside class="portfolio-description">
-                    <h3>Cliff Temple</h3>
-                    <p>이곳에 첫 번째 포트폴리오 작업물에 대한 설명을 적습니다. 어떤 컨셉과 기술을 사용했는지 요약합니다.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unreal engine 5.4</span>
-                        <span class="tech-tag">MS Office</span>
-                        <span class="tech-tag">GPT-4o</span>
-                    </div>
-                </aside>
-                <div class="portfolio-gallery">
-                    <div class="responsive-video-wrapper">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/P8K_inNfEQw?si=whuhoA936na0ivhi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <img src="https://via.placeholder.com/800x450.png?text=Portfolio+1+Image+1" alt="포트폴리오 1 이미지 1">
-                    <img src="https://via.placeholder.com/800x450.png?text=Portfolio+1+Image+2" alt="포트폴리오 1 이미지 2">
-                </div>
-            </section>
-
-            <section class="portfolio-item">
-                <aside class="portfolio-description">
-                    <h3>포트폴리오 #2 제목</h3>
-                    <p>이곳에 두 번째 포트폴리오 작업물에 대한 설명을 적습니다.</p>
-                     <div class="tech-tags">
-                        <span class="tech-tag">Blender</span>
-                        <span class="tech-tag">Photoshop</span>
-                    </div>
-                </aside>
-                <div class="portfolio-gallery">
-                    <div class="responsive-video-wrapper">
-                        <iframe src="http://googleusercontent.com/youtube.com/7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <img src="https://via.placeholder.com/800x450.png?text=Portfolio+2+Image+1" alt="포트폴리오 2 이미지 1">
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>Contact</p>
-            <p>Email: <a href="mailto:pjipro2@naver.com">pjipro2@naver.com</a></p>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2025. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+        .lightbox-close {
+            position: absolute; top: 25px; right: 35px;
