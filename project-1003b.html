@@ -46,8 +46,7 @@
         /* --- 반응형 유튜브 영상 스타일 --- */
         .responsive-video-wrapper {
             position: relative; overflow: hidden; width: 100%;
-            padding-top: 56.25%; /* 16:9 비율 */
-            border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding-top: 56.25%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             background-color: #000;
         }
         .responsive-video-wrapper iframe {
@@ -57,21 +56,11 @@
 
         /* --- 프로젝트 정보 요약 박스 스타일 --- */
         .project-summary-box {
-            background-color: var(--secondary-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 60px; /* 비디오와의 간격 */
+            background-color: var(--secondary-bg-color); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 30px; margin-top: 60px;
         }
-        .project-summary-box .game-description {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-        .project-meta-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+        .project-summary-box .game-description { font-size: 1.1rem; margin-bottom: 20px; }
+        .project-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .project-meta-grid .label { font-weight: 600; color: var(--dark-text-color); }
 
         /* --- 업무 리스트 토글 버튼 스타일 --- */
@@ -88,14 +77,23 @@
         .collapsible-content {
             padding: 0 18px; max-height: 0; overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background-color: var(--secondary-bg-color);
-            border-radius: 0 0 5px 5px;
+            background-color: var(--secondary-bg-color); border-radius: 0 0 5px 5px;
         }
         .collapsible-content ul { padding: 20px 0 20px 20px; }
         
         .project-description p { font-size: 1.1rem; color: var(--light-text-color); line-height: 1.8; }
-        /* 문단 간의 간격을 주기 위한 스타일 */
         .project-description p + p { margin-top: 1.2em; }
+
+        /* ===== 과정 섹션 가독성 향상 스타일 ===== */
+        h4.process-subheading {
+            font-size: 1.4rem;
+            color: var(--dark-text-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        /* ===== [스타일 끝] ===== */
         
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 4px; border: 1px solid var(--border-color); }
@@ -174,13 +172,19 @@
             
             <section class="project-section project-description">
                 <h3>과정</h3>
-                <p>라이브 서비스 특성 상, 콘텐츠 소모 속도를 제어해야 했기 때문에 천상비M에선 하나의 방편으로 ‘특정 레벨 달성 퀘스트‘가 존재했습니다.</p>
-                <p>하지만, 콘텐츠 소모 속도를 조절하고자 했던 특정 레벨 달성 퀘스트가 유저 성장을 가로막는 강력한 허들로 작용했습니다. 이로 인해 다수의 유저가 퀘스트 진행이 막힌 상태로 장기간 방치되었으며, 이는 유저 이탈률을 높이는 주요 원인으로 분석되었습니다.</p>
-                <p>저의 과제는 다양한 구간에서 레벨 달성 퀘스트로 인해 오랜 시간 퀘스트를 진행하지 못하고 정체되어 있는 유저들에게 새로운 경험을 제공하는 것이었습니다.</p>
-                <p>단순히 메인 퀘스트의 허들을 낮추는 것은 기존 클리어 유저에게 박탈감을 줄 수 있고, 다양한 구간에 정체되어 있는 유저들을 모두 공략하긴 어렵다고 판단했습니다. 따라서, 정체된 유저가 잠시 메인 퀘스트 대신 선택적으로 플레이할 수 있는 별도의 외전 지역 ‘수라도’를 기획했습니다.</p>
-                <p>외전 지역에서 진행되는 외전 퀘스트는 메인 퀘스트 진행 중 특정 레벨 허들에 도달했을 때 자연스럽게 개방되도록 설계했습니다. 외전 퀘스트가 끝난 뒤 다시 메인 퀘스트에 도전하고, 다음 정체기에 도달하면 다음 단계의 외전 퀘스트가 개방되는 퀘스트 동선을 계획했습니다.</p>
-                <p>이 왕복형 퀘스트 구조는 유저에게 지루한 반복 플레이 경험을 덜어낼 수 있는 기회를 제공했습니다. 그 과정에서, 매력 있게 제작되었지만 시나리오상 충분한 서사를 제공하지 못한 NPC들의 과거들을 퀘스트에 녹여 내면서 내러티브적인 요소들을 강화했고, 몬스터 도감에 수치를 강화하여 외전 콘텐츠를 즐기는 것 자체만으로 이득을 본다는 느낌을 느낄 수 있도록 설계했습니다.</p>
-                <p>외전 콘텐츠를 만들면서 기획 의도를 실현하기 위한 구체적인 장치를 떠올리고 구상했던 경험은 저로 하여금 유저의 행동을 원하는 방향으로 이끌어 나가기 위한 최적의 방법을 찾아내는 역량을 강화하는 계기가 되었습니다.</p>
+                
+                <h4 class="process-subheading">문제 상황</h4>
+                <p>라이브 서비스 특성 상, 콘텐츠 소모 속도를 제어해야 했기 때문에 천상비M에선 하나의 방편으로 ‘특정 레벨 달성 퀘스트‘가 존재했습니다. 하지만, 콘텐츠 소모 속도를 조절하고자 했던 특정 레벨 달성 퀘스트가 유저 성장을 가로막는 <strong>강력한 허들</strong>로 작용했습니다. 이로 인해 다수의 유저가 퀘스트 진행이 막힌 상태로 장기간 방치되었으며, 이는 <strong>유저 이탈률을 높이는 주요 원인</strong>으로 분석되었습니다.</p>
+
+                <h4 class="process-subheading">과제 및 해결 방안</h4>
+                <p>저의 과제는 다양한 구간에서 레벨 달성 퀘스트로 인해 오랜 시간 퀘스트를 진행하지 못하고 정체되어 있는 유저들에게 <strong>새로운 경험을 제공</strong>하는 것이었습니다. 단순히 메인 퀘스트의 허들을 낮추는 것은 기존 클리어 유저에게 박탈감을 줄 수 있고, 다양한 구간에 정체되어 있는 유저들을 모두 공략하긴 어렵다고 판단했습니다. 따라서, 정체된 유저가 잠시 메인 퀘스트 대신 선택적으로 플레이할 수 있는 별도의 <strong>외전 지역 ‘수라도’</strong>를 기획했습니다.</p>
+                
+                <h4 class="process-subheading">기획 내용</h4>
+                <p>외전 지역에서 진행되는 외전 퀘스트는 메인 퀘스트 진행 중 특정 레벨 허들에 도달했을 때 자연스럽게 개방되도록 설계했습니다. 외전 퀘스트가 끝난 뒤 다시 메인 퀘스트에 도전하고, 다음 정체기에 도달하면 다음 단계의 외전 퀘스트가 개방되는 <strong>왕복형 퀘스트 구조</strong>는 유저에게 지루한 반복 플레이 경험을 덜어낼 수 있는 기회를 제공했습니다. 그 과정에서, 매력 있게 제작되었지만 시나리오상 충분한 서사를 제공하지 못한 NPC들의 과거들을 퀘스트에 녹여 내면서 <strong>내러티브적인 요소를 강화</strong>했고, 몬스터 도감에 수치를 강화하여 외전 콘텐츠를 즐기는 것 자체만으로 <strong>이득을 본다는 느낌</strong>을 느낄 수 있도록 설계했습니다.</p>
+                
+                <h4 class="process-subheading">획득 역량</h4>
+                <p>외전 콘텐츠를 만들면서 기획 의도를 실현하기 위한 구체적인 장치를 떠올리고 구상했던 경험은 저로 하여금 유저의 행동을 원하는 방향으로 이끌어 나가기 위한 <strong>최적의 방법을 찾아내는 역량을 강화</strong>하는 계기가 되었습니다.</p>
+
             </section>
             <section class="project-section project-gallery">
                 <h3>프로젝트 이미지</h3>
