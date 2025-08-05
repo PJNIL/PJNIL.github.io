@@ -129,21 +129,32 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
-        /* --- 이미지 갤러리 & 라이트박스 스타일 --- */
+        /* --- [수정됨] 이미지 갤러리 & 라이트박스 스타일 --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
-        .gallery-grid img {
-            width: 100%; border-radius: 4px;
+        .gallery-item {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
             border: 1px solid var(--border-color);
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .gallery-item img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
         .lightbox {
             display: none; position: fixed; z-index: 2000;
             left: 0; top: 0; width: 100%; height: 100%;
@@ -210,10 +221,14 @@
             </section>
 
             <section class="project-section project-tools">
-                <h3>게임 엔진 및 문서 툴</h3>
+                <h3>사용한 기술 및 소프트웨어</h3>
                 <div class="tech-tags">
                     <span class="tech-tag">Unity</span>
                     <span class="tech-tag">MS Office (Excel, PowerPoint)</span>
+                    <span class="tech-tag">Jira</span>
+                    <span class="tech-tag">Confluence</span>
+                    <span class="tech-tag">Photoshop</span>
+                </div>
             </section>
 
             <section class="project-section project-tasks">
@@ -271,12 +286,24 @@
             <section class="project-section project-gallery">
                 <h3>프로젝트 이미지</h3>
                 <div class="gallery-grid">
-                    <img class="gallery-image" src="image/Tutorial.png" alt="METIN 스크린샷 1">
-                    <img class="gallery-image" src="image/Siege1.png" alt="METIN 스크린샷 2">
-                    <img class="gallery-image" src="image/Siege2.png" alt="METIN 스크린샷 3">
-                    <img class="gallery-image" src="image/Field1.png" alt="METIN 스크린샷 4">
-                    <img class="gallery-image" src="image/Field2.png" alt="METIN 스크린샷 5">
-                    <img class="gallery-image" src="image/Worldmap.png" alt="METIN 스크린샷 6">
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Tutorial.png" alt="METIN 스크린샷 1">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Siege1.png" alt="METIN 스크린샷 2">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Siege2.png" alt="METIN 스크린샷 3">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Field1.png" alt="METIN 스크린샷 4">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Field2.png" alt="METIN 스크린샷 5">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/Worldmap.png" alt="METIN 스크린샷 6">
+                    </figure>
                 </div>
             </section>
         </div>
