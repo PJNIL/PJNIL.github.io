@@ -75,10 +75,8 @@
         .collapsible-toggle .arrow { font-size: 1rem; transition: transform 0.3s ease-out; }
         .collapsible-toggle.active .arrow { transform: rotate(180deg); }
         
-        /* ===== [수정된 스타일] 담당 업무 목록 ===== */
         .collapsible-content {
-            padding: 0; /* 내부 패딩을 제거하여 목록 스타일에 위임 */
-            max-height: 0; overflow: hidden;
+            padding: 0; max-height: 0; overflow: hidden;
             transition: max-height 0.4s ease-in-out;
             background-color: var(--secondary-bg-color);
             border-radius: 0 0 5px 5px;
@@ -86,60 +84,70 @@
             border-top: none;
         }
         .collapsible-content ul {
-            list-style: none;
-            padding: 0; margin: 0;
+            list-style: none; padding: 0; margin: 0;
         }
         .collapsible-content > ul {
             padding: 20px 25px;
         }
         .collapsible-content .task-role {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--dark-text-color);
-            margin-bottom: 15px;
+            font-size: 1.2rem; font-weight: 600;
+            color: var(--dark-text-color); margin-bottom: 15px;
         }
         .collapsible-content .task-role:not(:first-child) {
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 25px; padding-top: 20px;
             border-top: 1px dashed var(--border-color);
         }
         .collapsible-content .task-item {
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1.1rem; font-weight: 500;
             color: var(--dark-text-color);
-            margin-left: 5px;
-            margin-bottom: 10px;
+            margin-left: 5px; margin-bottom: 10px;
         }
         .collapsible-content .task-detail {
             margin-left: 20px;
         }
         .collapsible-content .task-detail li {
-            position: relative;
-            padding-left: 15px;
-            margin-bottom: 8px;
-            color: var(--light-text-color);
+            position: relative; padding-left: 15px;
+            margin-bottom: 8px; color: var(--light-text-color);
         }
         .collapsible-content .task-detail li::before {
-            content: '-';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
+            content: '-'; position: absolute; left: 0;
+            color: var(--primary-color); font-weight: bold;
         }
-        /* ===== [스타일 수정 끝] ===== */
         
         .project-description p { font-size: 1.1rem; color: var(--light-text-color); line-height: 1.8; }
         .project-description p + p { margin-top: 1.2em; }
 
         h4.process-subheading {
-            font-size: 1.4rem;
-            color: var(--dark-text-color);
+            font-size: 1.4rem; color: var(--dark-text-color);
             border-left: 4px solid var(--primary-color);
-            padding-left: 12px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            padding-left: 12px; margin-top: 40px; margin-bottom: 20px;
         }
         
+        /* ===== [추가된 스타일] 기술 태그 ===== */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .tech-tag {
+            background-color: var(--secondary-bg-color);
+            color: var(--dark-text-color);
+            padding: 8px 16px;
+            border-radius: 20px; /* Pill shape */
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease-in-out;
+        }
+        .tech-tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        /* ===== [스타일 추가 끝] ===== */
+
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 4px; border: 1px solid var(--border-color); }
 
@@ -189,6 +197,13 @@
                 </div>
             </section>
             
+            <section class="project-section project-tools">
+                <h3>게임 엔진 및 문서 툴</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">MS Office</span>
+                </div>
+            </section>
             <section class="project-section project-tasks">
                 <h3>담당 업무</h3>
                 <button type="button" class="collapsible-toggle">
@@ -241,6 +256,7 @@
                     </ul>
                 </div>
             </section>
+            
             <section class="project-section project-description">
                 <h3>과정</h3>
                 
@@ -287,8 +303,7 @@
                     if (content.style.maxHeight) {
                         content.style.maxHeight = null;
                     } else {
-                        // We add a bit of padding to the scrollHeight to ensure content isn't cut off
-                        content.style.maxHeight = (content.scrollHeight + 20) + "px";
+                        content.style.maxHeight = (content.scrollHeight + 40) + "px";
                     }
                 });
             });
