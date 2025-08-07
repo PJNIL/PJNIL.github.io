@@ -113,10 +113,13 @@
             font-size: 1.1rem; 
             color: var(--light-text-color); 
             line-height: 1.8; 
-            margin-bottom: 1.2em;
+            margin-bottom: 1.2em; 
         }
         .project-description h4 + p {
-             margin-top: 1.2em;
+             margin-top: 1.2em; 
+        }
+        .project-description p:last-child {
+            margin-bottom: 0;
         }
         
         h4.process-subheading {
@@ -244,22 +247,6 @@
             font-size: 1.2rem;
             color: var(--dark-text-color);
             margin-bottom: 8px;
-        }
-        
-        .project-description blockquote {
-            margin: 2em 10px;
-            padding: 20px;
-            background-color: var(--secondary-bg-color);
-            border-left: 4px solid var(--primary-color);
-            border-radius: 0 8px 8px 0;
-            font-size: 1.1rem;
-            font-style: italic;
-            font-weight: 500;
-            color: var(--dark-text-color);
-            line-height: 1.7;
-        }
-        .project-description blockquote p {
-            margin-bottom: 0;
         }
 
 
@@ -390,7 +377,7 @@
                 <h3>과정</h3>
                 <h4 class="process-subheading">문제 상황</h4>
                 <p>저는 PC 원작의 깊은 향수를 가진 팬들과 현대적인 모바일 MMORPG에 익숙한 유저들을 동시에 만족시킬 수 있는 월드를 디자인 해야 했습니다. 특히 캐릭터가 직접 월드를 뛰어다니기보다 '즉시 워프' 기능으로 주요 거점을 이동하는 게임의 핵심 시스템은, 유저로 하여금 동선의 중요성을 크게 낮췄고 이는 레벨의 몰입감을 설계하는 데 있어 큰 난관으로 다가왔습니다.</p>
-                <blockquote><p>원작의 감성은 보존하되, 현대적 편의성과 자연스러운 PVP를 유도하며, '워프' 중심의 플레이를 '탐험'의 경험으로 바꿔낼 새로운 월드 디자인이 필요했습니다.</p></blockquote>
+                <p>따라서 원작의 감성은 보존하되, 현대적 편의성과 자연스러운 PVP를 유도하며, '워프' 중심의 플레이를 '탐험'의 경험으로 바꿔낼 새로운 월드 디자인이 필요했습니다.</p>
                 
                 <h4 class="process-subheading">과정 및 해결 방안</h4>
                 <p>저는 위 과제를 해결하기 위해 다양한 레퍼런스 조사와 기존 원작의 경험을 분석하는 데 초점을 맞췄습니다. 원작의 경험을 분석하는 것에서부터 출발한 것은 유저들이 어떤 지역에서 추억을 느끼고, 어떤 스킬 혹은 몬스터에 애착을 갖는지 파악하여 이를 '보존할 것'과 '개선할 것'으로 분류하는 데 있어서 큰 도움이 됐습니다. 이 과정을 통해 제가 달성해야 할 과제들을 구체화하여 나열할 수 있었습니다.</p>
@@ -419,7 +406,8 @@
 
                 <h4 class="process-subheading">획득 역량</h4>
                 <p>해당 프로젝트를 통해 저는 먼저 기존 IP를 깊이 있게 분석하여 원작의 감성과 현대적 편의성을 조화시키는 월드 기획 역량을 갖추었습니다. 그 결과 ‘초반 구간에서 PC 버전의 향수가 느껴진다‘는 유저들의 의견을 들을 수 있었고 서비스 기간이 1년에 다다른 지금까지도 '메틴이라서 한다'는 유저들의 긍정적인 피드백을 이끌어낼 수 있었습니다.</p>
-                <blockquote><p>단순히 맵을 구성하는 것을 넘어 한정된 자원을 활용하여 유저 간의 자연스러운 경쟁을 유도하고, 시스템적 제약을 ‘도착 경험'이라는 새로운 컨셉으로 풀어내며 플레이 경험을 극대화하는 창의적 문제 해결 능력을 함양할 수 있었습니다.</p></blockquote>
+                <p>나아가 단순히 맵을 구성하는 것을 넘어 '에픽 몬스터 존'과 같이 한정된 자원을 활용하여 유저 간의 자연스러운 경쟁을 유도하고, 이를 핵심 콘텐츠로 발전시키는 레벨 디자인 역량을 획득할 수 있었습니다. 특히 '즉시 워프'라는 시스템적 제약을 '도착 경험'이라는 새로운 컨셉으로 풀어내며 플레이 경험을 극대화하는 창의적 문제 해결 능력까지 함양할 수 있었습니다.</p>
+
             </section>
 
             <section class="project-section project-gallery">
@@ -429,7 +417,7 @@
                         <img class="gallery-image" src="image/Tutorial.png" alt="METIN 스크린샷 1">
                     </figure>
                     <figure class="gallery-item">
-                        <img class="gallery-image" src="image/Field3.png" alt="METIN 스크린샷 2">
+                        <img class="gallery-image" src="image/Siege1.png" alt="METIN 스크린샷 2">
                     </figure>
                     <figure class="gallery-item">
                         <img class="gallery-image" src="image/Siege2.png" alt="METIN 스크린샷 3">
@@ -442,6 +430,15 @@
                     </figure>
                     <figure class="gallery-item">
                         <img class="gallery-image" src="image/Worldmap.png" alt="METIN 스크린샷 6">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/NewImage1.png" alt="METIN 스크린샷 7">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/NewImage2.png" alt="METIN 스크린샷 8">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img class="gallery-image" src="image/NewImage3.png" alt="METIN 스크린샷 9">
                     </figure>
                 </div>
             </section>
@@ -504,4 +501,3 @@
     </script>
 </body>
 </html>
-
