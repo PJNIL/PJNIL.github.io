@@ -17,7 +17,7 @@
             line-height: 1.6; padding-top: 70px;
         }
         .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-        h1, h2, h3, h4 { font-weight: 600; }
+        h1, h2, h3, h4, h5 { font-weight: 600; }
 
         /* --- 내비게이션 바 (공통) --- */
         .main-nav {
@@ -38,7 +38,7 @@
         }
         .page-header h2 { font-size: 2.8rem; margin: 0; }
         
-        /* --- [새로 디자인됨] 케이스 스터디 레이아웃 --- */
+        /* --- 케이스 스터디 레이아웃 --- */
         .case-study-main {
             padding: 60px 0;
         }
@@ -57,7 +57,7 @@
             margin-bottom: 80px;
         }
         .case-study-intro h3 { font-size: 2.2rem; margin-bottom: 15px; }
-        .case-study-intro p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px auto; color: var(--light-text-color); }
+        .case-study-intro p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px auto; color: var(--light-text-color); line-height: 1.8; }
         .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .tech-tag {
             background-color: var(--secondary-bg-color); color: var(--primary-color);
@@ -69,16 +69,62 @@
             padding: 60px 0;
             border-top: 1px solid var(--border-color);
         }
-        .process-step h4 { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
-        .process-step p { margin-bottom: 30px; }
+        .process-step h4 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+        .process-step h5 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+        .process-step p { margin-bottom: 20px; line-height: 1.8; color: var(--light-text-color); }
+        .process-step p strong { color: var(--dark-text-color); }
         
+        /* --- 과정 섹션 전용 리스트 스타일 --- */
+        .styled-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1.5em;
+        }
+        .styled-list > li {
+            position: relative;
+            padding: 20px 20px 20px 60px;
+            margin-bottom: 15px;
+            background-color: var(--secondary-bg-color);
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+        }
+        .styled-list > li > p {
+            margin-bottom: 0;
+        }
+        .styled-list > li::before {
+            counter-increment: list-counter;
+            content: counter(list-counter);
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .styled-list strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--dark-text-color);
+            margin-bottom: 8px;
+        }
+        .styled-list.ol {
+             counter-reset: list-counter;
+        }
+        .styled-list.ul > li::before {
+            content: '•';
+            font-size: 2.5rem;
+            top: 10px;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
+            margin-top: 30px;
         }
         .gallery-grid img {
-            width: 100%; height: 200px; object-fit: cover;
+            width: 100%; height: 220px; object-fit: cover;
             border-radius: 4px; border: 1px solid var(--border-color);
             cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -134,8 +180,8 @@
             </div>
 
             <section class="case-study-intro">
-                <h3>Cliff Temple</h3>
-                <p>3D 3인칭 액션 잠입 게임의 그레이박싱 디자인입니다. 페이싱과 선형적인 던전형 레벨 디자인에 도전해보고자 다음의 프로젝트를 진행했습니다.</p>
+                <h3>프로젝트 개요 (Project Overview)</h3>
+                <p>‘Ciff Temple’은 ‘Z축을 활용한 입체적인 동선’과 ‘목적지가 존재하는 선형적 구조’를 핵심 목표로 설계한 3D 잠입 액션 게임 레벨입니다. 유저는 다양한 높이와 구조로 이루어진 레벨을 탐험하며 자신만의 루트를 찾아내고 잠입과 맨틀링 시스템을 활용하여 최종 목적지에 도달하는 경험을 하게 됩니다. 저는 비트 차트와 긴장 곡선, 평면도를 활용해 레벨이 유저에게 제가 의도한 경험과 성취감을 제공할 수 있도록 디자인했습니다.</p>
                 <div class="tech-tags">
                     <span class="tech-tag">Unreal Engine 5.4</span>
                     <span class="tech-tag">MS Office</span>
@@ -146,26 +192,56 @@
             </section>
 
             <section class="process-step">
-                <h4>제작 과정 (Process)</h4>
-                <p>이 포트폴리오를 만들게 된 계기나 아이디어 구상 단계에 대해 서술합니다. 레퍼런스 이미지나 간단한 스케치를 함께 보여주면 좋습니다.</p>
-                <div class="gallery-grid">
-                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Reference+Image+1" alt="레퍼런스 이미지 1">
-                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Initial+Sketch" alt="초기 스케치">
-                </div>
+                <h4>핵심 디자인 목표 및 전략</h4>
+                <p>저는 이 프로젝트를 진행하면서 크게 두 가지의 목표를 잡았습니다.</p>
+                <ol class="styled-list ol">
+                    <li><p>높이(Z축)을 활용한 입체적 공간 경험 극대화</p></li>
+                    <li><p>선형적 구조를 통한 동기 부여와 성취감 극대화</p></li>
+                </ol>
+                <p>제가 실무에서 제작했던 월드 레벨과는 달리 명확한 시작과 끝이 있는 선형 구조의 던전 레벨을 제작해, 유저가 모든 구간에서 도달해야 하는 목적지를 뚜렷하게 인지할 수 있도록 유도했습니다. 위의 목표를 달성하기 위해 저는 비슷한 목표와 경험을 제공하는 다른 게임의 레벨을 조사했습니다.</p>
+                <p><strong>첫 번째 레퍼런스 게임은 ‘Styx: Master of Shadows’입니다.</strong><br>해당 게임의 레벨은 마법과 같은 특수 능력에 크게 의존하지 않고 레벨 구조 자체를 유저가 탐색하며 길을 찾아 나가는 재미가 있었습니다. 이를 차용해 엄폐물의 위치나 우회로 등 레벨 디자인을 통한 긴장감을 유발하는 방식을 학습했습니다. 또한, ‘Styx’에선 다소 아쉬웠던 일부 구간의 늘어지거나 부담스러웠던 페이싱 조절을 개선하여 ‘쉼터’ 구간과 ‘긴장’ 구간을 명확히 구분해 유저의 감정 곡선을 조절하고자 했습니다.</p>
+                <p><strong>두 번째 레퍼런스 게임은 ‘Cyberpunk 2077’입니다.</strong><br>이 게임은 잠입 액션 게임은 아니지만, 하나의 목표에 대한 다양한 접근 루트를 제공하는 디자인을 차용했습니다. 선형적인 구조의 레벨 안에서도 유저가 스스로의 선택에 따라 자신만의 돌파 루트를 만들 수 있는 자유도를 제공하고 싶었습니다.</p>
             </section>
 
             <section class="process-step">
-                <h4>주요 작업 내용 (Details)</h4>
-                <p>모델링, 텍스처링, 라이팅 등 구체적인 작업 내용을 단계별로 설명합니다. 어떤 기술적 도전을 했고, 어떻게 해결했는지 보여주면 전문성을 어필할 수 있습니다.</p>
-                 <div class="gallery-grid">
-                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Modeling+WIP" alt="모델링 과정">
-                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Texturing+WIP" alt="텍스처링 과정">
-                    <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Lighting+Setup" alt="라이팅 셋업">
-                </div>
+                <h4>레벨 디자인 프로세스</h4>
+                <ol class="styled-list ol">
+                    <li><strong>컨셉 시각화 및 비트 차트 작성</strong><p>Midjourney와 Gemini를 활용해 프로젝트의 전체적인 컨셉을 시각화 했습니다. 전반적인 레벨 구조는 ‘Styx’를 차용했기 때문에, 개방적이고 중세 풍의 디자인을 레벨의 핵심 테마로 선정했습니다. 이를 바탕으로 유저가 겪게 될 주요 경험의 흐름을 정리하기 위해 비트 차트를 작성하고 러프한 감정 곡선을 그렸습니다.</p></li>
+                    <li><strong>2D 평면도 제작</strong><p>작성된 비트 차트를 기반으로 공간을 구역화하고 전체적인 동선과 상호작용 요소들을 배치한 2D 평면도를 제작했습니다. 이 단계에서 비트 차트와 평면도를 오가며 제 아이디어와 주고자 하는 경험들을 구체화했습니다. 특히, 개선하고자 했던 페이싱 조절에 신경 쓰며 각 구역의 역할을 보다 명확히 구분하여 평면도를 제작했습니다.</p></li>
+                    <li><strong>블록아웃 및 3D 공간감을 위한 목업</strong><p>Unreal Engine 5의 박스 그리드 툴을 활용하여 평면도로 제작한 레벨을 3D로 구현했습니다. 이 과정에서 평면도에선 미처 고려하지 못했던 시야각과 엄폐물의 위치, 조명, Z축의 활용 등을 재점검할 수 있었습니다.</p></li>
+                    <li><strong>그레이 박싱 및 핵심 메카닉 구현</strong><p>박스 그리드 툴로 제작된 목업 레벨 위에 디테일을 추가할 수 있는 그레이박싱을 진행했습니다. 이 과정에선 잠입 경험에 핵심적인 기능을 리스트업 하고 각 구역에 배치할 핵심 경험을 위한 기술적 구현이 필요한 사항들을 보기 좋게 정리하는 과정을 거쳤습니다.</p></li>
+                    <li><strong>플레이 테스트 및 피드백 반영 수정</strong><p>혼자 진행하는 프로젝트다 보니, 레벨을 제작할 때마다 끊임없는 자기 고뇌와 수정이 있었습니다. 이를 해결하기 위해 제3자에게 플레이 영상을 공유하면서 객관적인 피드백을 수용하고, 제시된 다양한 피드백을 바탕으로 세세한 부분과 의도치 않았던 경험들을 배제해가며 레벨을 다듬었습니다.</p></li>
+                </ol>
             </section>
 
             <section class="process-step">
-                <h4>최종 결과물 (Final Renders)</h4>
+                <h4>주요 레벨 구간 상세 분석</h4>
+                
+                <h5>두 번째 잠입 구역</h5>
+                <p><strong>디자인 의도:</strong> 이 구간의 목표는 ‘Cyberpunk2077’에서 느꼈던 루트 선택의 재미를 제공하는 것이었습니다. 단순히 여러 개의 길을 제시하는 것이 아닌, 각 선택이 갖는 의미를 뚜렷한 리스크와 보상으로 이어지게 제작하여 유저 스스로 자신만의 돌파 루트를 찾을 수 있는 경험을 제공하고자 했습니다.</p>
+                <p><strong>공간 구조 및 특징:</strong> 구간 목표를 달성하기 위해 저는 성격이 다른 두 개의 진입로와 두 개의 보상 공간을 설계했습니다. 각 진입로의 특성과 가지고 있는 리스크/보상은 다음과 같습니다.</p>
+                <ul class="styled-list ul">
+                    <li><p><strong>루트 A:</strong> 낮은 지대에서 구역에 진입, 적들에게 노출될 개활지를 마주하며 위험을 감수하고 루트를 찾아 나서야 하는 진입로입니다. 단, 루트 A의 경우, 해당 구간의 최종 목표 지점을 직관적으로 가장 먼저 확인할 수 있고, 표시된 안내형 오브젝트들을 통해 동선 계획 수립을 용이하게 진행할 수 있다는 장점이 존재합니다.</p></li>
+                    <li><p><strong>루트 B:</strong> 높은 위치의 마천루로 진입하는 이 공간은, 루트 A보다 안전하고, ‘두드려보고’ 건널 수 있는 여유를 제공합니다. 단, 루트 B의 경우, 제한된 시야로 인해 한정된 공간만 미리 확인할 수 있으며, 최종 목표를 어렴풋이 ‘예상’만 가능하도록 만들어, 직접 레벨을 진행해가며 최종 목적지를 확인해야 한다는 단점이 존재합니다.</p></li>
+                </ul>
+                <p>다음은 확장형 보상 공간입니다. 레벨을 진행하면서 유저의 적극성 및 관찰력에 따라 추가적인 보상을 획득할 수 있는 공간들을 마련하여 유저의 승부욕과 성취욕을 자극하도록 설계했습니다.</p>
+                
+                <h5>거중기 등반 구간</h5>
+                <p><strong>디자인 의도:</strong> 이 구간은 유저가 ‘맨틀링’ 시스템을 적극적으로 활용하여 길을 찾는 ‘패스 파인딩의 재미’를 목표로 제작되었습니다. ‘맨틀링 시스템’을 단순한 이동 시스템이 아닌 레벨이라는 하나의 거대한 퍼즐을 풀기 위한 핵심 시스템으로 느껴질 수 있도록 디자인했습니다.</p>
+                <p><strong>공간 구조 및 특징:</strong> 유저가 해당 구역에 진입하는 즉시 다음 구역으로 향하는 출구가 명확하게 보이도록 설계했습니다. 하지만 출구로 향하는 다리를 의도적으로 끊어, 물리적으로 접근이 불가능함을 인지시켰습니다. 그리고 그 끊어진 길 위에 거대한 바위를 매단 ‘거중기’를 배치했고, 바위와 거중기를 연결하는 밧줄에 눈에 띄는 메테리얼을 입혀 단서를 남김으로써, ‘밧줄을 끊어야겠다.’라는 유저의 동기를 자연스럽게 유발할 수 있도록 설계했습니다. 또한, 거대한 거중기를 하나의 맨틀링 퍼즐로 설계하여 단순한 맨틀링의 반복이 아닌 좁은 발판을 밟거나, 장애물을 넘거나, 간단한 패트롤을 피하거나 낮은 구조물 아래를 숙여서 통과하는 등 다채로운 조작을 요구하며 풍부한 경험을 제공할 수 있도록 설계했습니다.</p>
+                <p><strong>의도된 플레이 경험:</strong> 저는 해당 구역을 간단한 3개의 파트로 나누어 제작했습니다.</p>
+                <ol class="styled-list ol">
+                    <li><p><strong>잠입과 관찰:</strong> 초반부는 기존과 같이 NPC의 순찰과 시야를 피해 잠입하는 긴장감을 유지합니다. 그와 동시에 유저는 끊어진 길과 거중기를 통해 해당 구간의 핵심 목표를 파악하고 어떤 루트를 밟아야 할지 고민합니다.</p></li>
+                    <li><p><strong>거중기 등반:</strong> 거대한 거중기에 올라타면서 본격적인 맨틀링 구간을 진행합니다. 유저는 다음으로 올라갈 지점을 끊임없이 탐색하고, 다양한 구간들을 통과하며 길을 개척해 나가는 패스 파인딩의 재미를 경험합니다.</p></li>
+                    <li><p><strong>짜릿한 해방 구간:</strong> 집중력과 스트레스를 유발하는 맨틀링 구간이 종료되면 유저에게 거중기의 끝에서 방해 없이 질주할 수 있는 짧은 ‘해방의 순간’을 제공합니다. 그 후, 밧줄을 끊어 거대한 바위를 떨어뜨리고 유저가 직접 자신의 행동으로 다음 구역을 잇는 길을 쟁취했다는 경험과 성취감을 제공합니다.</p></li>
+                </ol>
+
+            </section>
+
+            <section class="process-step">
+                <h4>회고 (Retrospective)</h4>
+                <p>Cliff Temple 프로젝트를 통해, ‘Z축을 활용한 입체적인 동선’과 ‘선형적인 구조의 재미’라는 핵심 목표 두 가지를 성공적으로 구현할 수 있었습니다. 나아가 레벨 아이디어를 비트 차트와 감정 곡선, 2D평면도를 활용해3D 공간으로 구체화하는 과정은 레벨 디자이너로서 한 단계 성장할 수 있었던 계기가 되었습니다.</p>
+                <p>해당 프로젝트를 진행하면서 쿼터뷰 게임의 레벨을 제작할 때와는 달리 제한된 시야 속에서 유저를 어떤 방식으로 이끌어 가는 지와 그 과정 속에서 유저에게 경험을 제공할 수 있는 다양한 방식들을 학습할 수 있었습니다. 또한, 공간의 밀도가 3D 환경에서 유저에게 어떤 느낌으로 다가갈 수 있을지와 프로젝트의 방향에 있어서 초기 컨셉 및 평면도의 역할이 얼마나 중요한지 체감할 수 있었습니다.</p>
                 <div class="gallery-grid">
                     <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Final+Render+1" alt="최종 결과물 1">
                     <img class="gallery-image" src="https://via.placeholder.com/800x600.png?text=Final+Render+2" alt="최종 결과물 2">
@@ -215,4 +291,3 @@
     </script>
 </body>
 </html>
-
