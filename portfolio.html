@@ -168,6 +168,7 @@
             padding: 10px 0;
             scroll-snap-type: x mandatory;
             scrollbar-width: none; /* Firefox */
+            scroll-behavior: smooth;
             cursor: grab;
         }
         .scroll-gallery.grabbing { cursor: grabbing; }
@@ -185,7 +186,7 @@
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid var(--border-color);
-            pointer-events: none; /* 드래그 시 이미지 링크 이동 방지 */
+            pointer-events: none;
         }
         .scroll-gallery figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--light-text-color); }
         .arrow-btn {
@@ -562,18 +563,17 @@
             // 라이트박스 갤러리 기능
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
-            // ".gallery-image" 클래스를 가진 모든 이미지를 대상으로 라이트박스 기능 추가
             const galleryImages = document.querySelectorAll(".gallery-image");
             const closeBtn = document.querySelector(".lightbox-close");
 
             galleryImages.forEach(image => {
-                // 이미지의 부모가 figure일 경우, figure를 클릭 대상으로 변경 (캡션 클릭 시에도 라이트박스 활성화)
-                const clickableTarget = image.parentElement.tagName === 'FIGURE' ? image.parentElement : image;
-
+                const clickableTarget = image.closest('figure') || image;
                 clickableTarget.addEventListener("click", function(e) {
-                    lightbox.style.display = "block";
-                    // 클릭된 것이 figure라도 img의 src를 가져오도록 수정
-                    lightboxImg.src = image.src; 
+                    // 이미지 자체를 클릭했을 때만 라이트박스 열기
+                    if (e.target.tagName === 'IMG') {
+                        lightbox.style.display = "block";
+                        lightboxImg.src = e.target.src;
+                    }
                 });
             });
 
