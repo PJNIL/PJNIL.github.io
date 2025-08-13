@@ -156,25 +156,27 @@
             color: var(--light-text-color);
         }
         
-        /* [수정됨] 이미지 스크롤 스냅 UI 스타일 */
-        .scroll-gallery-wrap { margin: 30px 0; }
+        /* [수정됨] 인터랙티브 캐러셀 (스크롤 스냅 UI) 스타일 */
+        .scroll-gallery-wrap { 
+            margin: 30px 0;
+            position: relative;
+        }
         .scroll-gallery {
             display: flex;
             overflow-x: auto;
             gap: 20px;
             padding: 10px 0;
-            scroll-snap-type: x mandatory; /* X축 스크롤 스냅 적용 */
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) var(--border-color);
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+            cursor: grab;
         }
-        .scroll-gallery::-webkit-scrollbar { height: 8px; }
-        .scroll-gallery::-webkit-scrollbar-track { background: var(--secondary-bg-color); border-radius: 4px; }
-        .scroll-gallery::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 4px; }
+        .scroll-gallery.grabbing { cursor: grabbing; }
+        .scroll-gallery::-webkit-scrollbar { display: none; } /* Chrome, Safari */
         .scroll-gallery figure {
-            flex: 0 0 85%; /* 이미지 크기 확대 (85%) */
+            flex: 0 0 85%;
             max-width: 500px;
             text-align: center;
-            scroll-snap-align: center; /* 가운데로 스냅 */
+            scroll-snap-align: center;
         }
         .scroll-gallery img {
             width: 100%;
@@ -183,9 +185,36 @@
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid var(--border-color);
-            cursor: pointer;
+            pointer-events: none; /* 드래그 시 이미지 링크 이동 방지 */
         }
         .scroll-gallery figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--light-text-color); }
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            color: var(--dark-text-color);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .scroll-gallery-wrap:hover .arrow-btn {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .arrow-btn:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
 
 
         /* --- 과정 섹션 전용 리스트 스타일 --- */
@@ -214,7 +243,7 @@
             margin-top: 10px;
             padding-left: 20px;
         }
-         .styled-list > li > ul li {
+        .styled-list > li > ul li {
             color: var(--light-text-color);
             margin-bottom: 5px;
         }
@@ -389,12 +418,14 @@
                         <p>박스 그리드 툴로 제작된 목업 레벨 위에 디테일을 추가할 수 있는 그레이박싱을 진행했습니다. 이 과정에선 잠입 경험에 핵심적인 기능을 리스트업 하고 각 구역에 배치할 핵심 경험을 위한 기술적 구현이 필요한 사항들을 보기 좋게 정리하는 과정을 거쳤습니다.</p>
                         <strong class="sub-title">그레이박싱 이미지</strong>
                         <div class="scroll-gallery-wrap">
+                            <button type="button" class="arrow-btn prev-btn">‹</button>
                             <div class="scroll-gallery">
                                <figure><img class="gallery-image" src="image/P5_1.png" alt="그레이 박싱 1"></figure>
                                <figure><img class="gallery-image" src="image/P5_2.png" alt="그레이 박싱 2"></figure>
                                <figure><img class="gallery-image" src="New_Image.png" alt="그레이 박싱 3"></figure>
                                <figure><img class="gallery-image" src="New_Image.png" alt="그레이 박싱 4"></figure>
                             </div>
+                            <button type="button" class="arrow-btn next-btn">›</button>
                         </div>
                         <strong class="sub-title">블루프린트 이미지</strong>
                         <div class="level-analysis-images">
@@ -527,17 +558,22 @@
     </div>
 
     <script>
-        // 라이트박스 갤러리 기능
         document.addEventListener("DOMContentLoaded", function() {
+            // 라이트박스 갤러리 기능
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
+            // ".gallery-image" 클래스를 가진 모든 이미지를 대상으로 라이트박스 기능 추가
             const galleryImages = document.querySelectorAll(".gallery-image");
             const closeBtn = document.querySelector(".lightbox-close");
 
             galleryImages.forEach(image => {
-                image.addEventListener("click", function() {
+                // 이미지의 부모가 figure일 경우, figure를 클릭 대상으로 변경 (캡션 클릭 시에도 라이트박스 활성화)
+                const clickableTarget = image.parentElement.tagName === 'FIGURE' ? image.parentElement : image;
+
+                clickableTarget.addEventListener("click", function(e) {
                     lightbox.style.display = "block";
-                    lightboxImg.src = this.src;
+                    // 클릭된 것이 figure라도 img의 src를 가져오도록 수정
+                    lightboxImg.src = image.src; 
                 });
             });
 
@@ -549,7 +585,54 @@
             lightbox.addEventListener("click", function(event) {
                 if (event.target === lightbox) { closeLightbox(); }
             });
+
+            // 인터랙티브 캐러셀 기능
+            const carousels = document.querySelectorAll(".scroll-gallery-wrap");
+
+            carousels.forEach(carousel => {
+                const slider = carousel.querySelector('.scroll-gallery');
+                const prevBtn = carousel.querySelector('.prev-btn');
+                const nextBtn = carousel.querySelector('.next-btn');
+
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('grabbing');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('grabbing');
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('grabbing');
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // 스크롤 속도 조절
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+
+                // 화살표 버튼 기능
+                nextBtn.addEventListener('click', () => {
+                    const scrollAmount = slider.querySelector('figure').clientWidth + 20; // 이미지 너비 + gap
+                    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    const scrollAmount = slider.querySelector('figure').clientWidth + 20;
+                    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            });
         });
     </script>
 </body>
 </html>
+
