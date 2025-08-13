@@ -107,7 +107,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- 이미지 갤러리 공통 --- */
+        /* --- 레퍼런스 및 갤러리 이미지 공통 스타일 --- */
         .reference-images, .level-analysis-images {
             display: grid;
             gap: 20px;
@@ -156,13 +156,14 @@
             color: var(--light-text-color);
         }
         
-        /* [추가됨] 이미지 스크롤 UI 스타일 */
+        /* [수정됨] 이미지 스크롤 스냅 UI 스타일 */
         .scroll-gallery-wrap { margin: 30px 0; }
         .scroll-gallery {
             display: flex;
             overflow-x: auto;
-            gap: 15px;
-            padding: 10px 5px;
+            gap: 20px;
+            padding: 10px 0;
+            scroll-snap-type: x mandatory; /* X축 스크롤 스냅 적용 */
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--border-color);
         }
@@ -170,9 +171,10 @@
         .scroll-gallery::-webkit-scrollbar-track { background: var(--secondary-bg-color); border-radius: 4px; }
         .scroll-gallery::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 4px; }
         .scroll-gallery figure {
-            flex: 0 0 70%;
-            max-width: 400px;
+            flex: 0 0 85%; /* 이미지 크기 확대 (85%) */
+            max-width: 500px;
             text-align: center;
+            scroll-snap-align: center; /* 가운데로 스냅 */
         }
         .scroll-gallery img {
             width: 100%;
@@ -212,7 +214,7 @@
             margin-top: 10px;
             padding-left: 20px;
         }
-        .styled-list > li > ul li {
+         .styled-list > li > ul li {
             color: var(--light-text-color);
             margin-bottom: 5px;
         }
@@ -551,4 +553,3 @@
     </script>
 </body>
 </html>
-
